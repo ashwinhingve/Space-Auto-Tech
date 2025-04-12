@@ -1,0 +1,67 @@
+/* Section.css */
+
+/* General Section Styling */
+.elementor-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: #f5f5f5; /* Light gray background */
+    border-radius: 8px; /* Rounded corners */
+  }
+  
+  /* Column Styling */
+  .elementor-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .elementor-col-50 {
+    width: 50%;
+  }
+  
+  /* Image Styling */
+  .elementor-widget-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Optional for rounded edges */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Heading Styling */
+  .elementor-heading-title {
+    font-size: 2rem; /* Large heading size */
+    font-weight: bold;
+    color: #333; /* Dark text color */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Text Editor Styling */
+  .elementor-widget-text-editor p {
+    font-size: 1rem; /* Default paragraph size */
+    line-height: 1.6; /* Line height for readability */
+    color: #666; /* Gray text color */
+    text-align: center;
+    margin: 0 auto; /* Center-align text */
+    max-width: 600px; /* Restrict width */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .elementor-col-50 {
+      width: 100%; /* Make columns stack on smaller screens */
+    }
+  
+    .elementor-heading-title {
+      font-size: 1.5rem; /* Reduce heading size */
+    }
+  
+    .elementor-widget-text-editor p {
+      font-size: 0.9rem; /* Reduce paragraph size */
+    }
+  }
+  

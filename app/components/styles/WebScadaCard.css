@@ -1,0 +1,47 @@
+/* WebScadaCard.module.css */
+.e-con-inner {
+    padding: 20px;
+    background-color: #1a1a1a;
+    /* background-color:; */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .elementor-heading-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .elementor-button {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+  
+  .elementor-button:hover {
+    background-color: #cc5200;
+  }
+  
+  .btnarrow,
+  .btnarrow2 {
+    margin-left: 10px;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .btnarrow {
+    transform: rotate(90deg);
+  }
+  
+  .btnarrow2 {
+    transform: rotate(180deg);
+  }
+  

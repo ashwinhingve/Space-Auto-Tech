@@ -1,0 +1,109 @@
+.e-con-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Background color for the container */
+  }
+  
+  .e-con-full {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .elementor-widget-container {
+    text-align: center;
+  }
+  
+  .elementor-heading-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333; /* Heading text color */
+  }
+  
+  .specification-gate p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555; /* Paragraph text color */
+    text-align: left;
+  }
+  
+  .specification-gate img {
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  
+  .elementor-widget-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .elementor-button-wrapper {
+    margin-top: 20px;
+  }
+  
+  .elementor-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #007bff; /* Button background color */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .elementor-button:hover {
+    background-color: #0056b3; /* Button hover background color */
+  }
+  
+  .elementor-button .btnarrow {
+    margin-left: 8px;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .elementor-button .btnarrow2 {
+    margin-left: 4px;
+    width: 12px;
+    height: 12px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .elementor-heading-title {
+      font-size: 1.5rem;
+    }
+  
+    .specification-gate p {
+      font-size: 0.9rem;
+    }
+  
+    .elementor-button {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .e-con-inner {
+      padding: 10px;
+    }
+  
+    .elementor-widget-image img {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+  

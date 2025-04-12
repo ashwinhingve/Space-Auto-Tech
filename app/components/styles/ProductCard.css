@@ -1,0 +1,157 @@
+.e-con-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Image Section */
+.elementor-widget-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Section */
+.elementor-heading-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin: 20px 0;
+  line-height: 1.4;
+}
+
+/* Description Section */
+.elementor-widget-container p {
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.elementor-widget-container span {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.elementor-widget-container img.alignnone {
+  margin-right: 10px;
+}
+
+/* Button Section */
+.elementor-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.elementor-button {
+  background-color: #42778f;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.elementor-button:hover {
+  background-color: #cc5200;
+}
+
+.elementor-button-content-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.elementor-button-text {
+  margin-right: 10px;
+}
+
+.btnarrow,
+.btnarrow2 {
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+}
+
+.btnarrow {
+  transform: rotate(90deg);
+}
+
+.btnarrow2 {
+  transform: rotate(180deg);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .e-con-inner {
+    padding: 15px;
+  }
+
+  .respo{
+    flex-direction: column;
+  }
+
+  .elementor-heading-title {
+    font-size: 20px;
+    margin: 15px 0;
+  }
+
+  .elementor-widget-container p {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 15px;
+  }
+
+  .elementor-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .btnarrow,
+  .btnarrow2 {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .elementor-heading-title {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  .elementor-widget-container p {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  .elementor-button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .btnarrow,
+  .btnarrow2 {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+
+
+  
+  

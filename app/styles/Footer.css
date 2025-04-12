@@ -1,0 +1,46 @@
+ 
+
+.footer {  
+  background-color: #282c34;  
+  color: rgb(251, 248, 248);  
+  padding: 20px 0;  
+  text-align: center;  
+}  
+
+.container {  
+  max-width: 1200px;  
+  margin: 0 auto;  
+  padding: 0 20px;  
+}  
+
+.links {  
+  display: flex;  
+  justify-content: center;  
+  gap: 20px;  
+  margin-bottom: 10px;  
+}  
+
+.links a {  
+  color: white;  
+  text-decoration: none;  
+}  
+
+.links a:hover {  
+  text-decoration: underline;  
+}  
+
+.socials {  
+  display: flex;  
+  justify-content: center;  
+  gap: 15px;  
+  margin-bottom: 10px;  
+}  
+
+.socials img {  
+  width: 24px;  
+  height: 24px;  
+}  
+
+.copy {  
+  margin-top: 10px;  
+}

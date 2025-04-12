@@ -1,0 +1,37 @@
+.faq {
+    padding: 2rem;
+    background-color: #f9f9f9;
+  }
+  
+  .faq h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #141b34;
+  }
+  
+  .faqbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .faqbox:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .faqbox span {
+    font-size: 1rem;
+    color: #141b34;
+  }
+  
+  .faqbox svg {
+    flex-shrink: 0;
+  }
+  

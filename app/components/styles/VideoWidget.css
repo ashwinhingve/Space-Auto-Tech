@@ -1,0 +1,42 @@
+/* General styles for the video widget */
+.elementor-widget-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .elementor-widget-container {
+    width: 100%;
+    max-width: 800px; /* Restrict maximum width for the video */
+    overflow: hidden;
+    border-radius: 15px; /* Add rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for better appearance */
+  }
+  
+  .e-hosted-video {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  
+  .elementor-video {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensure the video fits nicely within the container */
+    border: none; /* Remove any default borders */
+  }
+  
+  /* Adjustments for responsiveness */
+  @media (max-width: 768px) {
+    .elementor-widget-container {
+      max-width: 100%;
+    }
+  }
+  
+  /* Optional: Add hover effects */
+  .elementor-widget-container:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+    transition: transform 0.3s ease-in-out;
+  }
+  

@@ -1,0 +1,126 @@
+/* Container Styling */
+#content {
+    padding: 2rem;
+    background-color: #f9f9f9; /* Light background for contrast */
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .section-title-container {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    color: #333;
+    text-transform: uppercase;
+  }
+  
+  .section-title-main {
+    font-weight: bold;
+    color: #007acc; /* Accent color */
+  }
+  
+  /* Product Category Grid */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+  
+  .product-category {
+    flex: 1 1 calc(33.333% - 1rem); /* 3 columns on large screens */
+    max-width: calc(33.333% - 1rem);
+    box-sizing: border-box;
+  }
+  
+  @media (max-width: 768px) {
+    .product-category {
+      flex: 1 1 calc(50% - 1rem); /* 2 columns on medium screens */
+      max-width: calc(50% - 1rem);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-category {
+      flex: 1 1 100%; /* Full width on small screens */
+      max-width: 100%;
+    }
+  }
+  
+  /* Box Styling */
+  .box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .box-image {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .image-zoom img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .image-zoom:hover img {
+    transform: scale(1.1);
+  }
+  
+  .box-text {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .box-text-inner {
+    color: #333;
+  }
+  
+  .header-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007acc;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  
+  /* Shadow Effects */
+  .has-shadow {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .row-box-shadow-1 {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .row-box-shadow-2-hover:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Accessibility */
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  a:hover {
+    color: #005f99; /* Darker shade of the accent color */
+  }
+  
