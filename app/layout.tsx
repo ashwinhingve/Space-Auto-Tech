@@ -5,9 +5,8 @@ import Footer from "./component/Footer"
 
 
 export const metadata: Metadata = {
-  title: "Space Automation",
-  description: "This is a homepage of Space Automation ",
-
+  title: "Space Auto Tech - Advanced Automation Solutions",
+  description: "Space Auto Tech provides cutting-edge automation solutions for IoT, industrial systems, and smart technology. Explore our products, stock, and store.",
 };
 export default function RootLayout({
   children,
@@ -15,14 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-
-    <html>
-
-      <body
-        className={`antialiased`}>
+    <html lang="en">
+      <body className="antialiased">
         <Navbar />
-        {children}
-       <Footer/>
+        <main className="min-h-screen">
+          {children}
+        </main>
+        <Footer/>
       </body>
     </html>
   );

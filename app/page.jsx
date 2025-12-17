@@ -1,7 +1,6 @@
 "use client"
-import "./globals.css";
 import Carousel from './components/home/page';
-import './/styles/Footer.css';
+import './styles/Footer.css';
 
 export default function Home() {
 

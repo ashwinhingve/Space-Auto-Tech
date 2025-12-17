@@ -4,25 +4,6 @@ import Link from 'next/link';
 // import { useEffect } from 'react';
 
 export default function profile() {
-  // Fade-in effect when the component mounts
-  //  useEffect(() => {
-  //   const fadeElements = document.querySelectorAll('.fade-in');
-  //   fadeElements.forEach((el) => {
-  //     el.classList.add('opacity-0', 'transition-opacity', 'duration-1000');
-  //     const handleScroll = () => {
-  //       const rect = el.getBoundingClientRect();
-  //       if (rect.top < window.innerHeight && rect.bottom > 0) {
-  //         el.classList.add('opacity-100');
-  //       }
-  //     };
-  //     window.addEventListener('scroll', handleScroll);
-  //     handleScroll(); // Check immediately on mount
-  //   });
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, []);
   return (
     <>
 
@@ -184,7 +165,7 @@ export default function profile() {
                 </h2>
                 <ul className="list-none pl-0 text-2xl text-gray-200">
                   <li><strong>Email</strong>: <a href="mailto:spaceautomation29@gmail.com" className="text-blue-300 hover:text-blue-500">spaceautomation29@gmail.com</a></li>
-                  <li><strong>Phone</strong>: <a href="tel:+91 93403 96818" className="text-blue-300 hover:text-blue-500">+91 93403 96818</a></li>
+                  <li><strong>Phone</strong>: <a href="tel:+91 81206 84036" className="text-blue-300 hover:text-blue-500">+91 12345 67890</a></li>
                   <li><strong>Website</strong>: <a href="https://spacesautomation.com" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:text-blue-500">https://spacesautomation.com</a></li>
                 </ul>
               </div>
@@ -197,74 +178,7 @@ export default function profile() {
           <div className='h-10'></div>
         </div>
       </div>
-
-      {/* Team Section */}
-      {/* <section className="text-gray-600 body-font bg-gray-50 py-24">
-        <div className="container px-5 mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-12">
-            Meet Our Team
-          </h2>
-          <div className="flex flex-wrap -m-4 justify-center">
-            {["Alice", "Bob", "Charlie"].map((name, index) => (
-              <div key={index} className="p-6 w-full lg:w-1/3 md:w-1/2 sm:w-80">
-                <div className="h-full bg-white rounded-lg shadow-lg p-6 flex flex-col items-center transition-transform transform hover:scale-105 hover:shadow-2xl">
-                  <Image
-                    alt="team member"
-                    src={`https://dummyimage.com/200x200`}
-                    width={200}
-                    height={200}
-                    className="rounded-full w-40 h-40 object-cover object-center mb-4 border-4 border-gray-200"
-                  />
-                  <h3 className="title-font text-xl font-semibold text-gray-800 mb-2">
-                    {name}
-                  </h3>
-                  <h4 className="text-gray-500 text-md mb-3">Position</h4>
-                  <p className="text-gray-600 text-sm">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet.
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* Testimonials Section */}
-      {/* <section className="text-gray-600 body-font bg-gray-50 py-24">
-        <div className="container px-5 mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-12">
-            What Our Customers Say
-          </h2>
-          <div className="flex flex-wrap -m-4 justify-center">
-            {[1, 2, 3].map((_, index) => (
-              <div key={index} className="p-6 w-full lg:w-1/3 md:w-1/2 sm:w-80">
-                <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center transition-transform transform hover:scale-105 hover:shadow-2xl">
-                  <p className="leading-relaxed text-base mb-6 text-gray-600">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vehicula nisi nec quam tincidunt, vitae cursus augue vulputate.
-                  </p>
-                  <div className="inline-flex items-center">
-                    <Image
-                      alt="testimonial"
-                      src="https://dummyimage.com/50x50"
-                      width={50}
-                      height={50}
-                      className="w-16 h-16 rounded-full flex-shrink-0 object-cover object-center"
-                    />
-                    <span className="flex-grow flex flex-col pl-4">
-                      <span className="title-font font-medium text-gray-900 text-lg">
-                        Customer Name
-                      </span>
-                      <span className="text-gray-500 text-sm">Location</span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-
+      
     </>
 
 

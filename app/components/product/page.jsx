@@ -64,7 +64,7 @@ export default function ProductCard() {
                                                 alt={product.name}
                                                 className="object-cover object-center w-full h-full  hover:scale-105"
                                                 src={product.image}
-                                                layout="fill"
+                                                fill
                                             />
                                         </a>
                                         <div className="mt-4 text-center">
@@ -95,7 +95,7 @@ export default function ProductCard() {
                                             alt={product.name}
                                             className="object-cover object-center w-full h-full  hover:scale-105"
                                             src={product.image}
-                                            layout="fill"
+                                            fill
                                         />
                                     </a>
                                 </Link>
@@ -125,7 +125,7 @@ export default function ProductCard() {
                                             alt={product.name}
                                             className="object-cover object-center w-full h-full  hover:scale-105"
                                             src={product.image}
-                                            layout="fill"
+                                            fill
                                         />
                                     </a>
                                 </Link>
@@ -155,7 +155,7 @@ export default function ProductCard() {
                                             alt={product.name}
                                             className="object-cover object-center w-full h-full  hover:scale-105"
                                             src={product.image}
-                                            layout="fill"
+                                            fill
                                         />
                                     </a>
                                 </Link>
