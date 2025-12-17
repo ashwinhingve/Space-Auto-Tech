@@ -3,7 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef, useCallback, useEffect, useState } from 'react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Carousel = () => {
   const slides = [
@@ -85,8 +88,8 @@ const Carousel = () => {
   const intervalRef = useRef(null);
   
   const handleNext = useCallback(() => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % 5);
-  }, []);
+    setActiveIndex((prevIndex) => (prevIndex + 1) % slides.length);
+  }, [slides.length]);
 
   const handlePrev = () => {
     setActiveIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
@@ -108,49 +111,119 @@ const Carousel = () => {
   const box3Ref = useRef();
 
   useGSAP(() => {
+    // Hero carousel entrance
     gsap.from("#s1 #default-carousel", {
       opacity: 0,
-      delay: 1,
-      duration: 0.7,
-      stagger: 0.2,
-      scale: 0.3,
+      delay: 0.3,
+      duration: 1.2,
+      scale: 0.95,
+      ease: "power3.out",
     });
 
+    // Hero text animations
+    gsap.from("#hero-title", {
+      opacity: 0,
+      y: 50,
+      delay: 0.8,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    gsap.from("#hero-subtitle", {
+      opacity: 0,
+      y: 30,
+      delay: 1.1,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    // About section cards with stagger
     gsap.from("#s2 .content-card", {
+      y: 60,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "#s2",
+        start: "top 70%",
+      },
+    });
+
+    // Services section heading
+    gsap.from("#services-heading", {
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      scrollTrigger: {
+        trigger: "#s3",
+        start: "top 80%",
+      },
+    });
+
+    // Service cards animation
+    gsap.from(".service-card", {
       y: 50,
       opacity: 0,
-      delay: 0.5,
-      duration: 0.8,
-      stagger: 0.3,
-    });
-
-    gsap.from("#box", {
-      y: 30,
-      opacity: 0,
       duration: 0.6,
-      stagger: 0.15,
+      // stagger: 0.1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#boxes",
+        start: "top 80%",
+      },
     });
   });
 
   return (
     <>
+      <style jsx>{`
+        @keyframes gradient {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+          0%, 100% { opacity: 0.5; }
+          50% { opacity: 0.8; }
+        }
+
+        .animate-pulse-glow {
+          animation: pulse-glow 3s ease-in-out infinite;
+        }
+      `}</style>
+      
       <section className='pt-24 pb-12 bg-gradient-to-b from-gray-50 to-white'>
         
         {/* Hero Carousel Section */}
         <section ref={box1Ref} id="s1" className="mb-20 px-4 md:px-8">
           <div id="default-carousel" className="relative w-full max-w-7xl mx-auto" role="region" aria-label="Image carousel">
-            {/* Carousel Wrapper with Glassmorphism Effect */}
+            {/* Carousel Wrapper */}
             <div className="relative h-[400px] md:h-[600px] overflow-hidden rounded-3xl shadow-2xl">
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10 pointer-events-none"></div>
               
               {slides.map((src, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
                     activeIndex === index 
-                      ? 'opacity-100 scale-100' 
-                      : 'opacity-0 scale-110'
+                      ? 'opacity-100' 
+                      : 'opacity-0'
                   }`}
                 >
                   <Image
@@ -166,10 +239,10 @@ const Carousel = () => {
               {/* Hero Text Overlay */}
               <div className="absolute inset-0 z-20 flex items-center justify-center">
                 <div className="text-center px-6">
-                  <h1 className="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-2xl">
-                    Innovation in <span className="bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent">Automation</span>
+                  <h1 id="hero-title" className="text-4xl md:text-7xl font-black text-white mb-4 drop-shadow-2xl">
+                    Innovation in <span className="bg-gradient-to-r from-teal-400 to-blue-500 bg-clip-text text-transparent animate-gradient">Automation</span>
                   </h1>
-                  <p className="text-lg md:text-2xl text-white/90 max-w-2xl mx-auto drop-shadow-lg">
+                  <p id="hero-subtitle" className="text-lg md:text-2xl text-white/90 max-w-2xl mx-auto drop-shadow-lg">
                     Empowering the future with intelligent IoT solutions
                   </p>
                 </div>
@@ -192,7 +265,7 @@ const Carousel = () => {
               ))}
             </div>
 
-            {/* Minimalist Navigation Buttons */}
+            {/* Navigation Buttons */}
             <button
               onClick={handlePrev}
               className="absolute top-1/2 left-4 z-30 -translate-y-1/2 w-14 h-14 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center hover:bg-white/30 transition-all duration-300 group"
@@ -215,15 +288,16 @@ const Carousel = () => {
           </div>
         </section>
 
-        {/* About Section with Modern Cards */}
+        {/* About Section */}
         <section ref={box2Ref} id="s2" className="relative py-20 px-4 md:px-8">
           <div className="container mx-auto max-w-7xl">
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
               {/* Why Choose Us Card */}
-              <div className="content-card group relative bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100">
-                {/* Animated Background Gradient */}
+              <div className="content-card group relative bg-white rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:-translate-y-2 w-full">
+                {/* Animated Background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-teal-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-teal-600 rounded-3xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur"></div>
                 
                 <div className="relative z-10">
                   <div className="inline-block mb-6">
@@ -254,11 +328,11 @@ const Carousel = () => {
                 </div>
               </div>
 
-              {/* Testimonial Card with Modern Design */}
-              <div className="content-card relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-10 shadow-xl text-white overflow-hidden">
+              {/* Testimonial Card */}
+              <div className="content-card relative bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-10 shadow-xl text-white overflow-hidden hover:-translate-y-2 transition-all duration-500 w-full">
                 {/* Decorative Elements */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-teal-500/20 to-blue-500/20 rounded-full blur-3xl"></div>
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-blue-500/20 to-teal-500/20 rounded-full blur-3xl"></div>
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-teal-500/20 to-blue-500/20 rounded-full blur-3xl animate-pulse-glow"></div>
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-blue-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse-glow" style={{animationDelay: '1.5s'}}></div>
                 
                 <div className="relative z-10">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-16 h-16 text-teal-400 mb-8 opacity-50" viewBox="0 0 975.036 975.036">
@@ -282,14 +356,14 @@ const Carousel = () => {
           </div>
         </section>
 
-        {/* Services Section with Modern Grid */}
+        {/* Services Section */}
         <section ref={box3Ref} id='s3' className="py-20 px-4 md:px-8 bg-gradient-to-b from-white to-gray-50">
           <div className="container mx-auto max-w-7xl">
             
             {/* Section Header */}
-            <div className="text-center mb-16">
+            <div id="services-heading" className="text-center mb-16">
               <h2 className="font-black text-5xl md:text-6xl mb-4">
-                <span className="bg-gradient-to-r from-blue-600 via-teal-600 to-blue-600 bg-clip-text text-transparent">Our Solutions</span>
+                <span className="bg-gradient-to-r from-blue-600 via-teal-600 to-blue-600 bg-clip-text text-transparent animate-gradient">Our Solutions</span>
               </h2>
               <div className="flex justify-center">
                 <div className="h-1.5 w-32 bg-gradient-to-r from-blue-600 to-teal-600 rounded-full"></div>
@@ -299,38 +373,37 @@ const Carousel = () => {
               </p>
             </div>
 
-            {/* Services Grid */}
-            <div id="boxes" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Services Grid - All 8 Services */}
+            <div id="boxes" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {services.map((service) => (
                 <div
-                  id="box"
                   key={service.id}
-                  className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100"
+                  className="service-card group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 w-full h-full flex flex-col"
                 >
-                  {/* Image Container with Overlay */}
-                  <div className="relative h-56 overflow-hidden">
+                  {/* Image Container */}
+                  <div className="relative h-56 overflow-hidden flex-shrink-0">
                     <Image
                       src={service.imageSrc}
                       alt={service.title}
                       width={400}
                       height={300}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
                     />
                     {/* Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     
                     {/* Icon Badge */}
-                    <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-2xl shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                    <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-2xl shadow-lg transform group-hover:scale-110 transition-all duration-300 animate-float">
                       {service.icon}
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col flex-grow">
                     <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-teal-600 group-hover:bg-clip-text transition-all duration-300">
                       {service.title}
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed mb-6 line-clamp-4">
+                    <p className="text-sm text-gray-600 leading-relaxed mb-6 line-clamp-4 group-hover:text-gray-700 transition-colors duration-300 flex-grow">
                       {service.description}
                     </p>
 
@@ -350,7 +423,7 @@ const Carousel = () => {
                   </div>
 
                   {/* Hover Border Effect */}
-                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-teal-400 rounded-2xl transition-colors duration-500 pointer-events-none"></div>
+                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-teal-400/50 rounded-2xl transition-colors duration-500 pointer-events-none"></div>
                 </div>
               ))}
             </div>
