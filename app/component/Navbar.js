@@ -21,9 +21,8 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "Stock", href: "http://stock.spaceautotech.com/" },
+    { name: "Inventory", href: "http://inventory.spaceautotech.com/" },
     { name: "Store", href: "http://store.spaceautotech.com/" },
-    { name: "IoT", href: "http://iot.spaceautotech.com/" },
     { name: "WebScada", href: "http://webscada.spaceautotech.com/" },
     { name: "About", href: "/components/profile" },
     { name: "Contact", href: "/components/contect" },
@@ -129,9 +128,8 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            isMenuOpen ? "max-h-96 opacity-100 pb-4" : "max-h-0 opacity-0"
-          }`}
+          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${isMenuOpen ? "max-h-96 opacity-100 pb-4" : "max-h-0 opacity-0"
+            }`}
         >
           <ul className="space-y-1 pt-2">
             {navItems.map((item) => (

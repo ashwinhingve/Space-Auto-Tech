@@ -1,0 +1,17 @@
+
+> space-auto-tech@0.1.0 build D:\Do Not Open\project\space auto tech\space
+> next build
+
+   Γû▓ Next.js 15.5.9
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 2.3s
+   Linting and checking validity of types ...
+Failed to compile.
+
+Type error: Cannot find type definition file for 'babel__core'.
+  The file is in the program because:
+    Entry point of type library 'babel__core' specified in compilerOptions
+
+Next.js build worker exited with code: 1 and signal: null
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.
