@@ -2,34 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+/* ─── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
 
+/* ─── CSS Design Tokens ─────────────────────────────────────────────────────── */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
+    /* Brand palette — "Under the Moonlight" periwinkle — RGB triplets for Tailwind opacity modifier support */
+    --color-forest:   112 112 170;  /* #7070AA — harmonised violet */
+    --color-cerulean: 92 92 153;    /* #5C5C99 — medium indigo */
+    --color-steel:    163 163 204;  /* #A3A3CC — muted lavender */
+    --color-sky:      204 204 255;  /* #CCCCFF — light periwinkle */
+    --color-cloud:    240 240 255;  /* #F0F0FF — soft periwinkle white */
+    --color-ink:      41 41 102;    /* #292966 — deep navy */
+
+    /* Semantic tokens — remapped to periwinkle hues */
+    --background: 240 100% 97%;    /* #F0F0FF-ish soft periwinkle page bg */
+    --foreground:  240 43% 28%;    /* #292966 deep navy text */
+    --card:        0 0% 100%;
+    --card-foreground: 240 43% 28%;
+    --primary:     240 25% 48%;    /* #5C5C99 medium indigo */
+    --primary-foreground: 0 0% 100%;
+    --secondary:   240 100% 93%;   /* light periwinkle */
+    --secondary-foreground: 240 43% 28%;
+    --muted:       240 50% 93%;
+    --muted-foreground: 240 20% 50%;
+    --accent:      240 100% 93%;
+    --accent-foreground: 240 43% 28%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border:      240 60% 85%;
+    --input:       240 60% 85%;
+    --ring:        240 25% 48%;
+    --radius:      0.75rem;
   }
 }
 
-* {
+/* ─── Reset & Base ──────────────────────────────────────────────────────────── */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -37,50 +47,337 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  background-color: #F0F0FF;
+  color: #292966;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-  color: #1a202c;
+  line-height: 1.6;
 }
 
+/* ─── Typography Scale ──────────────────────────────────────────────────────── */
+h1, h2, h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+h4, h5, h6 {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* ─── Design System Components ─────────────────────────────────────────────── */
+@layer components {
+
+  /* — Buttons — */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-cerulean text-white font-medium text-sm
+           px-6 py-3 rounded-xl transition-all duration-200
+           hover:bg-cerulean-dark hover:shadow-button hover:-translate-y-px active:scale-[0.97] active:translate-y-0
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cerulean focus-visible:ring-offset-2;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 bg-transparent text-cerulean font-medium text-sm
+           px-6 py-3 rounded-xl border border-cerulean/40 transition-all duration-200
+           hover:bg-cerulean/8 hover:border-cerulean hover:-translate-y-px active:scale-[0.97] active:translate-y-0
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cerulean focus-visible:ring-offset-2;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 text-cerulean font-medium text-sm
+           px-4 py-2 rounded-lg transition-all duration-200
+           hover:bg-cerulean/10 active:scale-[0.98];
+  }
+  .btn-white {
+    @apply inline-flex items-center gap-2 bg-white text-cerulean font-semibold text-sm
+           px-6 py-3 rounded-xl transition-all duration-200
+           hover:bg-cloud hover:shadow-lg hover:-translate-y-px active:scale-[0.97] active:translate-y-0;
+  }
+  .btn-outline-white {
+    @apply inline-flex items-center gap-2 bg-transparent text-white font-medium text-sm
+           px-6 py-3 rounded-xl border border-white/40 transition-all duration-200
+           hover:bg-white/10 hover:border-white/70 hover:-translate-y-px active:scale-[0.97] active:translate-y-0;
+  }
+
+  /* — Cards — */
+  .card {
+    @apply bg-white rounded-2xl p-6 shadow-card border border-sky/20 transition-all duration-300;
+  }
+  .card-hover {
+    @apply card hover:shadow-card-hover hover:-translate-y-1.5 hover:border-cerulean/30;
+  }
+  .card-glass {
+    @apply bg-white/70 backdrop-blur-md rounded-2xl p-6 shadow-glass border border-white/80;
+  }
+  .card-dark {
+    @apply bg-ink text-white rounded-2xl p-6 border border-sky/20 transition-all duration-300;
+  }
+  .card-accent {
+    @apply bg-cerulean text-white rounded-2xl p-6;
+  }
+  .card-outlined {
+    @apply bg-transparent rounded-2xl p-6 border border-sky/30 transition-all duration-300
+           hover:border-cerulean/50 hover:bg-cerulean/5 hover:-translate-y-1;
+  }
+
+  /* — Containers & Layout — */
+  .container-xl {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .container-lg {
+    @apply mx-auto max-w-5xl px-4 sm:px-6 lg:px-8;
+  }
+  .section {
+    @apply py-20 md:py-28;
+  }
+  .section-sm {
+    @apply py-12 md:py-16;
+  }
+
+  /* — Section Labels — */
+  .section-label {
+    @apply inline-flex items-center gap-2 text-xs font-mono font-medium tracking-widest
+           uppercase text-cerulean bg-cerulean/8 px-3 py-1.5 rounded-full border border-cerulean/20;
+  }
+  .section-number {
+    @apply font-mono text-sm font-medium text-sky/70 tracking-widest;
+  }
+
+  /* — Form Elements — */
+  .form-input {
+    @apply w-full bg-white border border-sky/30 rounded-xl px-4 py-3 text-ink text-sm
+           placeholder:text-ink/35 transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-cerulean/30 focus:border-cerulean;
+  }
+  .form-label {
+    @apply block text-sm font-medium text-ink/70 mb-1.5;
+  }
+  .form-textarea {
+    @apply form-input resize-none;
+  }
+
+  /* — Navigation — */
+  .nav-link {
+    @apply relative text-sm font-medium text-ink/70 px-3 py-1.5 rounded-lg transition-all duration-200
+           hover:text-cerulean hover:bg-cerulean/8;
+  }
+  .nav-link-active {
+    @apply text-cerulean bg-cerulean/10;
+  }
+
+  /* — Animated underline link — */
+  .link-underline {
+    @apply relative inline-block text-cerulean;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute left-0 -bottom-0.5 h-px bg-cerulean w-0 transition-all duration-300;
+  }
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* — Dividers — */
+  .divider {
+    @apply h-px bg-gradient-to-r from-transparent via-sky/40 to-transparent;
+  }
+  .divider-v {
+    @apply w-px bg-gradient-to-b from-transparent via-sky/40 to-transparent;
+  }
+
+  /* — Stat / Metric Cards — */
+  .stat-card {
+    @apply flex flex-col gap-1;
+  }
+  .stat-value {
+    @apply font-display text-4xl font-semibold text-cerulean leading-none;
+  }
+  .stat-label {
+    @apply text-sm text-ink/55 font-medium;
+  }
+
+  /* — Tag/Badge — */
+  .tag {
+    @apply inline-flex items-center text-xs font-mono font-medium tracking-wide
+           px-2.5 py-1 rounded-md;
+  }
+  .tag-blue   { @apply tag bg-sky/20 text-cerulean; }
+  .tag-green  { @apply tag bg-forest/15 text-forest; }
+  .tag-light  { @apply tag bg-cloud text-steel; }
+
+  /* — Feature Icon Wrap — */
+  .icon-wrap {
+    @apply flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center;
+  }
+  .icon-wrap-primary {
+    @apply icon-wrap bg-cerulean/12 text-cerulean;
+  }
+  .icon-wrap-sky {
+    @apply icon-wrap bg-sky/25 text-steel;
+  }
+  .icon-wrap-forest {
+    @apply icon-wrap bg-forest/12 text-forest;
+  }
+
+  /* — Gradient Text — */
+  .text-gradient {
+    @apply bg-gradient-to-r from-cerulean to-steel bg-clip-text text-transparent;
+  }
+  .text-gradient-light {
+    @apply bg-gradient-to-r from-sky to-cloud bg-clip-text text-transparent;
+  }
+
+  /* — Hero Geometric Pattern BG — */
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(rgba(204,204,255,0.18) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(204,204,255,0.18) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle, rgba(204,204,255,0.35) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* — Glow ring on hover (cards, images) — */
+  .glow-hover {
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
+  }
+  .glow-hover:hover {
+    box-shadow: 0 0 0 3px rgba(92,92,153,0.18), 0 8px 32px rgba(92,92,153,0.18);
+    transform: translateY(-2px);
+  }
+
+  /* — Section reveal wrapper (JS adds .revealed) — */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(.16,1,.3,1), transform 0.65s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* — Shimmer loading bar (decorative top accent) — */
+  .shimmer-bar {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer-bar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.25) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2.4s linear infinite;
+  }
+
+  /* — Badge / Pill chip — */
+  .badge {
+    @apply inline-flex items-center gap-1.5 text-[10px] font-mono font-semibold tracking-[0.14em] uppercase
+           px-2.5 py-1 rounded-full;
+  }
+  .badge-indigo { @apply badge bg-cerulean/10 text-cerulean border border-cerulean/20; }
+  .badge-sky    { @apply badge bg-sky/20 text-steel border border-sky/30; }
+  .badge-violet { @apply badge bg-forest/10 text-forest border border-forest/20; }
+
+  /* — Gradient-border card (top-border accent) — */
+  .card-gradient-top {
+    @apply card;
+    border-top: 2px solid transparent;
+    background-image: linear-gradient(white, white),
+                      linear-gradient(90deg, rgb(var(--color-cerulean)), rgb(var(--color-sky)));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  /* — Glass dark (dark overlay glass) — */
+  .glass-dark {
+    background: rgba(41, 41, 102, 0.72);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(204, 204, 255, 0.12);
+    @apply rounded-2xl;
+  }
+
+  /* — Floating number stat — */
+  .stat-pill {
+    @apply flex flex-col gap-0.5 px-5 py-3 bg-white rounded-2xl shadow-card border border-sky/20;
+  }
+  .stat-pill-value { @apply font-display text-2xl font-semibold text-cerulean leading-none; }
+  .stat-pill-label { @apply text-[10px] font-mono text-ink/45 uppercase tracking-widest; }
+}
+
+/* ─── Utilities ─────────────────────────────────────────────────────────────── */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  .text-balance { text-wrap: balance; }
 
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-in;
-  }
+  /* Animation delays */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-700 { animation-delay: 700ms; }
+  .delay-800 { animation-delay: 800ms; }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  /* Fill animation start state (for staggered entries) */
+  .opacity-0-init { opacity: 0; }
+  .anim-ready { animation-fill-mode: both; }
 
-  .animate-slide-up {
-    animation: slideUp 0.6s ease-out;
+  /* Marquee (infinite scroll strip) */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-x 28s linear infinite;
   }
+  .marquee-track:hover { animation-play-state: paused; }
 
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* Line clamp */
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+  .line-clamp-4 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
   }
 }
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 8px; height: 8px; }
+::-webkit-scrollbar-track  { background: #F0F0FF; }
+::-webkit-scrollbar-thumb  { background: rgba(92,92,153,0.4); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(92,92,153,0.7); }
+
+/* ─── Selection ─────────────────────────────────────────────────────────────── */
+::selection {
+  background-color: rgba(204,204,255,0.5);
+  color: #292966;
+}
+
+/* ─── Focus ring reset ───────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid rgba(92,92,153,0.7);
+  outline-offset: 3px;
+}
+
+/* ─── Smooth transitions on interactive elements ────────────────────────────── */
+a, button { transition-property: color, background-color, border-color, box-shadow, transform, opacity; transition-duration: 200ms; }

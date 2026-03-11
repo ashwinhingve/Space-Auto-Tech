@@ -34,6 +34,10 @@ const nextConfig: NextConfig = {
     {
       protocol: 'https',
       hostname: 'www.acmosrl.com',
+    },
+    {
+      protocol: 'https',
+      hostname: 'www.google.com',
     }],
   },
 };
