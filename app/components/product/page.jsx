@@ -1,179 +1,88 @@
-'use client'
+"use client";
 import Image from "next/image";
-// import { useState } from 'react';
 import Link from "next/link";
 
-const products1 = [
-    { id: 1, category: "CATEGORY", name: "sprincals System", price: "₹16.00", image: "/product/sprincal.jpeg" },
-    { id: 2, category: "CATEGORY", name: "Drip Irrigation Pipes", price: "₹21.15", image: "/product/dripp.webp" },
-    { id: 3, category: "CATEGORY", name: "Drip Accessories", price: "₹12.00", image: "/product/dripa.jpg" },
-    { id: 4, category: "CATEGORY", name: "HDPE Pipes", price: "₹18.40", image: "/product/HDPE.jpg" },
-    { id: 5, category: "CATEGORY", name: "PVC Pipes", price: "₹16.00", image: "/product/pvc.jpg" },
-    { id: 6, category: "CATEGORY", name: "Irrigation Valve", price: "₹21.15", image: "/product/valve.jpg" },
-    { id: 7, category: "CATEGORY", name: "Irrigation Tool", price: "₹12.00", image: "/product/tool.jpg" },
-    { id: 8, category: "CATEGORY", name: "Laser Spray Pipe", price: "₹18.40", image: "/product/laser.jpg" },
-    { id: 9, category: "CATEGORY", name: "Motors", price: "₹18.90", image: "/product/moters.jpg" },
+const productGroups = [
+  {
+    title: "Irrigation",
+    items: [
+      { id: 1, name: "Sprinkler System", price: "₹16.00", image: "/product/sprincal.jpeg" },
+      { id: 2, name: "Drip Irrigation Pipes", price: "₹21.15", image: "/product/dripp.webp" },
+      { id: 3, name: "Drip Accessories", price: "₹12.00", image: "/product/dripa.jpg" },
+      { id: 4, name: "HDPE Pipes", price: "₹18.40", image: "/product/HDPE.jpg" },
+      { id: 5, name: "PVC Pipes", price: "₹16.00", image: "/product/pvc.jpg" },
+      { id: 6, name: "Irrigation Valve", price: "₹21.15", image: "/product/valve.jpg" },
+      { id: 7, name: "Irrigation Tool", price: "₹12.00", image: "/product/tool.jpg" },
+      { id: 8, name: "Laser Spray Pipe", price: "₹18.40", image: "/product/laser.jpg" },
+      { id: 9, name: "Motors", price: "₹18.90", image: "/product/moters.jpg" },
+    ],
+  },
+  {
+    title: "Farming",
+    items: [
+      { id: 101, name: "Small Tools", price: "₹16.00", image: "/product/Smalltools.webp" },
+      { id: 102, name: "Tractor Tools", price: "₹21.15", image: "/product/Tractortools.jpg" },
+      { id: 103, name: "Tractor Accessories", price: "₹12.00", image: "/product/accessories.jpg" },
+      { id: 104, name: "Pesticides", price: "₹18.40", image: "/product/Pesticides.jpg" },
+      { id: 105, name: "Fertilisers", price: "₹16.00", image: "/product/fertilisers.jpg" },
+      { id: 106, name: "Seeds", price: "₹21.15", image: "/product/Seeds.webp" },
+    ],
+  },
+  {
+    title: "IoT Hardware",
+    items: [
+      { id: 201, name: "Arduino Boards", price: "₹16.00", image: "/product/Arduino.jpg" },
+      { id: 202, name: "Controllers", price: "₹21.15", image: "/product/Controllers.jpg" },
+      { id: 203, name: "Gateways", price: "₹12.00", image: "/product/Gateways.jpg" },
+      { id: 204, name: "Limit Switch", price: "₹18.40", image: "/product/LimitSwitch.jpeg" },
+      { id: 205, name: "Relay Boards", price: "₹16.00", image: "/product/RelayBoards.jpg" },
+    ],
+  },
 ];
-const products2 = [
-    { id: 1, category: "CATEGORY", name: "Small tools", price: "₹16.00", image: "/product/Smalltools.webp" },
-    { id: 2, category: "CATEGORY", name: "Tractor tools", price: "₹21.15", image: "/product/Tractortools.jpg" },
-    { id: 3, category: "CATEGORY", name: "Tractor accessories", price: "₹12.00", image: "/product/accessories.jpg" },
-    { id: 4, category: "CATEGORY", name: "Pesticides", price: "₹18.40", image: "/product/Pesticides.jpg" },
-    { id: 5, category: "CATEGORY", name: "fertilisers", price: "₹16.00", image: "/product/fertilisers.jpg" },
-    { id: 6, category: "CATEGORY", name: "Seeds", price: "₹21.15", image: "/product/Seeds.webp" },
-];
-const products3 = [
-    { id: 1, category: "CATEGORY", name: "Arduino Boards", price: "₹16.00", image: "/product/Arduino.jpg" },
-    { id: 2, category: "CATEGORY", name: "Controllers", price: "₹21.15", image: "/product/Controllers.jpg" },
-    { id: 3, category: "CATEGORY", name: "Gateways", price: "₹12.00", image: "/product/Gateways.jpg" },
-    { id: 4, category: "CATEGORY", name: "Limit Switch", price: "₹18.40", image: "/product/LimitSwitch.jpeg" },
-    { id: 5, category: "CATEGORY", name: "Relay Boards", price: "₹16.00", image: "/product/RelayBoards.jpg" },
-];
-// const products4 = [
-//     { id: 1, category: "CATEGORY", name: "", price: "₹16.00", image: "https://dummyimage.com/420x260" },
-//     { id: 2, category: "CATEGORY", name: "Shooting Stars", price: "₹21.15", image: "https://dummyimage.com/421x261" },
-//     { id: 3, category: "CATEGORY", name: "Neptune", price: "₹12.00", image: "https://dummyimage.com/422x262" },
-//     { id: 4, category: "CATEGORY", name: "The 400 Blows", price: "₹18.40", image: "https://dummyimage.com/423x263" },
-//     { id: 5, category: "CATEGORY", name: "The Catalyzer", price: "₹16.00", image: "https://dummyimage.com/424x264" },
-//     { id: 6, category: "CATEGORY", name: "Shooting Stars", price: "₹21.15", image: "https://dummyimage.com/425x265" },
-//     { id: 7, category: "CATEGORY", name: "Neptune", price: "₹12.00", image: "https://dummyimage.com/427x267" },
-//     { id: 8, category: "CATEGORY", name: "The 400 Blows", price: "₹18.40", image: "https://dummyimage.com/428x268" },
-// ];
 
+export default function ProductPage() {
+  return (
+    <div className="pt-16 bg-cloud min-h-screen">
+      <section className="relative overflow-hidden bg-white border-b border-sky/15">
+        <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
+        <div className="container-xl relative py-16 md:py-20">
+          <div className="max-w-2xl">
+            <div className="section-label mb-5">Product Catalog</div>
+            <h1 className="section-heading-modern mb-5">Explore Our Automation Product Range</h1>
+            <p className="section-copy-muted">Curated products for irrigation, farming, and IoT systems with ready-to-deploy options.</p>
+          </div>
+        </div>
+      </section>
 
-export default function ProductCard() {
-    // const [selectedSize, setSelectedSize] = useState('SM');
-
-    // const handleSizeChange = (event) => {
-    //     setSelectedSize(event.target.value);
-    // };
-    return (
-        <>
-            <div className='h-24'></div>
-
-            <h2 className="text-4xl text-center font-extrabold text-gray-900 bg-gradient-to-r from-teal-400 to-blue-500 text-transparent bg-clip-text py-2 rounded-md shadow-md">IRRIGATION</h2>
-            <section className="text-gray-600 body-font bg-gray-50 py-16">
-                <div className="container px-5 mx-auto">
-                    <div className="flex flex-wrap -m-4">
-                        {products1.map((product) => (
-                            <div key={product.id} className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <Link href={`/components/product/${product.id}`} legacyBehavior>
-                                    <div>
-                                        <a className="block relative h-64 rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300">
-                                            <Image
-                                                alt={product.name}
-                                                className="object-cover object-center w-full h-full  hover:scale-105"
-                                                src={product.image}
-                                                fill
-                                            />
-                                        </a>
-                                        <div className="mt-4 text-center">
-                                            <h3 className="text-blue-500 text-xs tracking-wide uppercase mb-1">
-                                                {product.category}
-                                            </h3>
-                                            <h2 className="text-gray-900 title-font text-lg font-semibold mb-2">
-                                                {product.name}
-                                            </h2>
-                                            <p className="mt-1 text-lg text-gray-700 font-bold">{product.price}</p>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-            <h2 className="text-4xl text-center font-extrabold text-gray-900 bg-gradient-to-r from-teal-400 to-blue-500 text-transparent bg-clip-text py-2 rounded-md shadow-md">FARMING</h2>
-            <section className="text-gray-600 body-font bg-gray-50 py-16">
-                <div className="container px-5 mx-auto">
-                    <div className="flex flex-wrap -m-4">
-                        {products2.map((product) => (
-                            <div key={product.id} className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <Link href={`/components/product/${product.id}`} legacyBehavior>
-                                    <a className="block relative h-64 rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300">
-                                        <Image
-                                            alt={product.name}
-                                            className="object-cover object-center w-full h-full  hover:scale-105"
-                                            src={product.image}
-                                            fill
-                                        />
-                                    </a>
-                                </Link>
-                                <div className="mt-4 text-center">
-                                    <h3 className="text-blue-500 text-xs tracking-wide uppercase mb-1">
-                                        {product.category}
-                                    </h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-semibold mb-2">
-                                        {product.name}
-                                    </h2>
-                                    <p className="mt-1 text-lg text-gray-700 font-bold">{product.price}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-            <h2 className="text-4xl text-center font-extrabold text-gray-900 bg-gradient-to-r from-teal-400 to-blue-500 text-transparent bg-clip-text py-2 rounded-md shadow-md">IOT</h2>
-            <section className="text-gray-600 body-font bg-gray-50 py-16">
-                <div className="container px-5 mx-auto">
-                    <div className="flex flex-wrap -m-4">
-                        {products3.map((product) => (
-                            <div key={product.id} className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <Link href={`/components/product/${product.id}`} legacyBehavior>
-                                    <a className="block relative h-64 rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300">
-                                        <Image
-                                            alt={product.name}
-                                            className="object-cover object-center w-full h-full  hover:scale-105"
-                                            src={product.image}
-                                            fill
-                                        />
-                                    </a>
-                                </Link>
-                                <div className="mt-4 text-center">
-                                    <h3 className="text-blue-500 text-xs tracking-wide uppercase mb-1">
-                                        {product.category}
-                                    </h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-semibold mb-2">
-                                        {product.name}
-                                    </h2>
-                                    <p className="mt-1 text-lg text-gray-700 font-bold">{product.price}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-            {/* <h2 className="text-4xl text-center font-extrabold text-gray-900 bg-gradient-to-r from-teal-400 to-blue-500 text-transparent bg-clip-text py-2 rounded-md shadow-md">SOLAR</h2>
-            <section className="text-gray-600 body-font bg-gray-50 py-16">
-                <div className="container px-5 mx-auto">
-                    <div className="flex flex-wrap -m-4">
-                        {products4.map((product) => (
-                            <div key={product.id} className="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                <Link href={`/components/product/${product.id}`} legacyBehavior>
-                                    <a className="block relative h-64 rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300">
-                                        <Image
-                                            alt={product.name}
-                                            className="object-cover object-center w-full h-full  hover:scale-105"
-                                            src={product.image}
-                                            fill
-                                        />
-                                    </a>
-                                </Link>
-                                <div className="mt-4 text-center">
-                                    <h3 className="text-blue-500 text-xs tracking-wide uppercase mb-1">
-                                        {product.category}
-                                    </h3>
-                                    <h2 className="text-gray-900 title-font text-lg font-semibold mb-2">
-                                        {product.name}
-                                    </h2>
-                                    <p className="mt-1 text-lg text-gray-700 font-bold">{product.price}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section> */}
-
-        </>
-    );
+      {productGroups.map((group) => (
+        <section key={group.title} className="section bg-white even:bg-cloud">
+          <div className="container-xl">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="font-display text-3xl font-semibold text-ink tracking-[-0.01em]">{group.title}</h2>
+              <span className="badge-indigo">{group.items.length} Items</span>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+              {group.items.map((product) => (
+                <Link
+                  key={product.id}
+                  href={`/components/product/${product.id}`}
+                  className="modern-panel card-hover-lift group bg-white rounded-2xl border border-slate-200/80 shadow-card overflow-hidden hover:shadow-card-hover"
+                >
+                  <div className="relative h-52">
+                    <Image src={product.image} alt={product.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" />
+                  </div>
+                  <div className="p-4">
+                    <p className="text-[10px] font-mono tracking-widest uppercase text-steel/75 mb-1">Category</p>
+                    <h3 className="text-base font-semibold text-ink group-hover:text-cerulean transition-colors">{product.name}</h3>
+                    <p className="mt-2 text-sm font-semibold text-cerulean">{product.price}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
+    </div>
+  );
 }

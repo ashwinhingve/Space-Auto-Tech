@@ -1,28 +1,20 @@
-'use client'
-// import { useNavigate } from "react-router-dom";
-import React from 'react'
-const page = () => {
-  // const navigate = useNavigate();
+"use client";
 
+export default function ComingPage() {
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-700">
-      <div className="text-center p-8 bg-white/90 rounded-xl shadow-xl max-w-lg">
-        <h1 className="text-5xl font-extrabold text-gray-800 mb-4">
-          🚧 Page Under Construction 🚧
-        </h1>
-        <p className="text-lg text-gray-600 mb-6">
-          This page is currently being built. We appreciate your patience as we
-          create something awesome for you!
-        </p>
-        {/* <button
-          onClick={() => navigate(-1)}
-          className="bg-teal-500 text-white py-2 px-6 rounded-full shadow-lg hover:bg-teal-600 hover:shadow-xl transition duration-300"
-        >
-          Go Back
-        </button> */}
-      </div>
+    <div className="pt-16 bg-cloud min-h-screen">
+      <section className="section">
+        <div className="container-lg">
+          <div className="card text-center py-16">
+            <div className="section-label mx-auto mb-5">Coming Soon</div>
+            <h1 className="section-heading-modern mb-4">This Page Is Under Construction</h1>
+            <p className="section-copy-muted max-w-xl mx-auto">
+              We are currently building this section with the same modern design language used across the website.
+              Please check back shortly.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
-};
-
-export default page;
+}

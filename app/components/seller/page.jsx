@@ -1,142 +1,85 @@
-"use client"
-import React, { useState } from "react";
+"use client";
+import { useState } from "react";
 
-const EditProduct = () => {
-  const [product, setProduct] = useState({
-    name: "",
-    description: "",
-    price: "",
-    image: null,
-  });
+export default function SellerPage() {
+  const [product, setProduct] = useState({ name: "", description: "", price: "", image: null });
+  const [status, setStatus] = useState("idle");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProduct({ ...product, [name]: value });
+    setProduct((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleImageChange = (e) => {
-    setProduct({ ...product, image: e.target.files[0] });
+    setProduct((prev) => ({ ...prev, image: e.target.files?.[0] || null }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setStatus("saving");
 
     const formData = new FormData();
     formData.append("name", product.name);
     formData.append("description", product.description);
     formData.append("price", product.price);
-    formData.append("image", product.image);
+    if (product.image) formData.append("image", product.image);
 
     try {
-      const response = await fetch("/api/products", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        alert("Product saved successfully!");
-        setProduct({
-          name: "",
-          description: "",
-          price: "",
-          image: null,
-        });
-      } else {
-        alert("Failed to save the product.");
+      const response = await fetch("/api/products", { method: "POST", body: formData });
+      if (!response.ok) {
+        setStatus("error");
+        return;
       }
-    } catch (error) {
-      console.error("Error uploading product:", error);
+
+      setProduct({ name: "", description: "", price: "", image: null });
+      setStatus("saved");
+    } catch {
+      setStatus("error");
     }
   };
 
   return (
-    <><div className='h-24'></div>
-    <div className="container mx-auto py-10">
-      <h1 className="text-2xl font-bold mb-5">Edit Product</h1>
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-      >
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="name"
-          >
-            Product Name
-          </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={product.name}
-            onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter product name"
-          />
+    <div className="pt-16 bg-cloud min-h-screen">
+      <section className="relative overflow-hidden bg-white border-b border-sky/15">
+        <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
+        <div className="container-xl relative py-16 md:py-20">
+          <div className="max-w-2xl">
+            <div className="section-label mb-5">Product Manager</div>
+            <h1 className="section-heading-modern mb-5">Add or Update Product Information</h1>
+            <p className="section-copy-muted">Use this form to upload products for your catalog.</p>
+          </div>
         </div>
+      </section>
 
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="description"
-          >
-            Description
-          </label>
-          <textarea
-            name="description"
-            id="description"
-            value={product.description}
-            onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter product description"
-          />
+      <section className="section">
+        <div className="container-lg">
+          <form onSubmit={handleSubmit} className="card space-y-4">
+            <div>
+              <label className="form-label" htmlFor="name">Product Name</label>
+              <input id="name" name="name" value={product.name} onChange={handleChange} className="form-input" required />
+            </div>
+            <div>
+              <label className="form-label" htmlFor="description">Description</label>
+              <textarea id="description" name="description" value={product.description} onChange={handleChange} className="form-textarea" rows={4} required />
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label className="form-label" htmlFor="price">Price</label>
+                <input id="price" name="price" type="number" value={product.price} onChange={handleChange} className="form-input" required />
+              </div>
+              <div>
+                <label className="form-label" htmlFor="image">Product Image</label>
+                <input id="image" name="image" type="file" accept="image/*" onChange={handleImageChange} className="form-input" />
+              </div>
+            </div>
+            <button type="submit" className="btn-primary" disabled={status === "saving"}>
+              {status === "saving" ? "Saving..." : "Save Product"}
+            </button>
+            {status === "saved" ? <p className="text-sm text-forest">Product saved successfully.</p> : null}
+            {status === "error" ? <p className="text-sm text-red-500">Failed to save product.</p> : null}
+          </form>
         </div>
-
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="price"
-          >
-            Price ($)
-          </label>
-          <input
-            type="number"
-            name="price"
-            id="price"
-            value={product.price}
-            onChange={handleChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter product price"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="image"
-          >
-            Product Image
-          </label>
-          <input
-            type="file"
-            name="image"
-            id="image"
-            accept="image/*"
-            onChange={handleImageChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          Save Product
-        </button>
-      </form>
+      </section>
     </div>
-    </>
   );
-};
-
-export default EditProduct;
+}

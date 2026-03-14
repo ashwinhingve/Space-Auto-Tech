@@ -58,6 +58,7 @@ const mainLinks = [
   { name: "Home",     href: "/" },
   { name: "Profile",  href: "/components/profile" },
   { name: "Contact",  href: "/components/contect" },
+  { name: "IoT",  href: "https://iot.spaceautotech.com/" },
 ];
 
 export default function Navbar() {
@@ -98,8 +99,8 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-lg shadow-[0_1px_0_0_rgba(92,92,153,0.15),0_4px_24px_rgba(41,41,102,0.07)] border-b border-sky/25"
-          : "bg-white/80 backdrop-blur-sm border-b border-sky/10"
+          ? "bg-white/92 backdrop-blur-xl shadow-[0_1px_0_rgba(15,23,42,0.08),0_10px_30px_rgba(15,23,42,0.06)] border-b border-slate-200/80"
+          : "bg-white/72 backdrop-blur-md border-b border-slate-200/60"
       }`}
     >
       <nav className="container-xl">
@@ -107,12 +108,12 @@ export default function Navbar() {
 
           {/* ── Logo ── */}
           <Link href="/" className="flex items-center gap-3 flex-shrink-0 group" aria-label="Space Auto Tech — Home">
-            <div className="relative w-9 h-9 rounded-lg overflow-hidden ring-1 ring-sky/30 group-hover:ring-cerulean/60 group-hover:shadow-[0_0_12px_rgba(92,92,153,0.3)] transition-all duration-300">
+            <div className="relative w-9 h-9 rounded-lg overflow-hidden ring-1 ring-slate-300/80 group-hover:ring-cerulean/55 group-hover:shadow-[0_8px_20px_-12px_rgba(15,23,42,0.45)] transition-all duration-300">
               <Image src="/assets/icon.png" alt="Space Auto Tech" fill className="object-cover" priority />
             </div>
             <div className="flex flex-col leading-none">
               <span className="font-display text-base font-semibold text-ink tracking-tight">Space Auto Tech</span>
-              <span className="text-[10px] font-mono text-forest/70 tracking-[0.15em] uppercase">Industrial Automation</span>
+              <span className="text-[10px] font-mono text-steel/80 tracking-[0.15em] uppercase">Industrial Automation</span>
             </div>
           </Link>
 
@@ -145,7 +146,7 @@ export default function Navbar() {
 
               {/* Dropdown panel */}
               <div
-                className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[320px] bg-white/98 backdrop-blur-md rounded-2xl shadow-[0_8px_32px_rgba(41,41,102,0.14)] border border-sky/20 p-2 transition-all duration-200 origin-top ${
+                className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[320px] bg-white/98 backdrop-blur-md rounded-2xl shadow-[0_20px_40px_-24px_rgba(15,23,42,0.45)] border border-slate-200/80 p-2 transition-all duration-200 origin-top ${
                   servicesOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
                 }`}
               >
@@ -156,7 +157,7 @@ export default function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="flex items-start gap-3 px-3 py-3 rounded-xl hover:bg-cloud transition-colors group/item"
+                    className="flex items-start gap-3 px-3 py-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
                   >
                     <span className="flex-shrink-0 w-9 h-9 rounded-lg bg-cerulean/8 flex items-center justify-center text-cerulean group-hover/item:bg-cerulean/15 transition-colors">
                       {item.icon}
@@ -186,7 +187,7 @@ export default function Navbar() {
             </Link>
 
             <button
-              className="lg:hidden p-2 rounded-lg hover:bg-cloud transition-colors"
+              className="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
               aria-expanded={mobileOpen}
@@ -212,12 +213,12 @@ export default function Navbar() {
 
       {/* ── Mobile Menu ── */}
       <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-sky/15 ${
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-slate-200/70 ${
           mobileOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="bg-white/98 backdrop-blur-md px-4 py-4 space-y-1">
-          <Link href="/" className={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${isActive("/") ? "text-cerulean bg-cerulean/8" : "text-ink hover:bg-cloud"}`}>
+          <Link href="/" className={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${isActive("/") ? "text-ink bg-ink/10" : "text-ink hover:bg-slate-100"}`}>
             Home
           </Link>
 
@@ -225,7 +226,7 @@ export default function Navbar() {
           <div>
             <button
               onClick={() => setMobileServOpen(!mobileServOpen)}
-              className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium text-ink hover:bg-cloud transition-colors"
+              className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium text-ink hover:bg-slate-100 transition-colors"
             >
               <span>Services</span>
               <svg className={`w-4 h-4 transition-transform duration-200 ${mobileServOpen ? "rotate-180" : ""}`} viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2">
@@ -235,7 +236,7 @@ export default function Navbar() {
             <div className={`overflow-hidden transition-all duration-200 ${mobileServOpen ? "max-h-96" : "max-h-0"}`}>
               <div className="pl-3 mt-1 space-y-0.5">
                 {servicesMenu.map((item) => (
-                  <Link key={item.href} href={item.href} className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-ink/70 hover:text-cerulean hover:bg-cloud transition-colors">
+                  <Link key={item.href} href={item.href} className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-ink/70 hover:text-ink hover:bg-slate-100 transition-colors">
                     <span className="text-cerulean/70">{item.icon}</span>
                     {item.label}
                   </Link>
@@ -248,7 +249,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${isActive(link.href) ? "text-cerulean bg-cerulean/8" : "text-ink hover:bg-cloud"}`}
+              className={`block px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${isActive(link.href) ? "text-ink bg-ink/10" : "text-ink hover:bg-slate-100"}`}
             >
               {link.name}
             </Link>

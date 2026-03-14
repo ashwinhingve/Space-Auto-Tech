@@ -95,10 +95,10 @@ export default function PLCPage() {
                 <div className="section-label">PLC Development</div>
                 <span className="tag-blue">Industrial Control</span>
               </div>
-              <h1 className="font-display text-5xl md:text-6xl font-semibold text-ink mb-6 text-balance">
+              <h1 className="section-heading-modern mb-6 text-balance">
                 Programmable Logic Controller Engineering
               </h1>
-              <p className="text-xl text-ink/55 leading-relaxed max-w-xl">
+              <p className="section-copy-muted text-base sm:text-lg max-w-xl">
                 From single-station control to plant-wide automation — we program, commission, and document PLC systems that run reliably for decades.
               </p>
             </div>
@@ -116,10 +116,10 @@ export default function PLCPage() {
           <div className="section-label mb-8">
             <span className="section-number">01</span> Capabilities
           </div>
-          <h2 className="font-display text-4xl font-semibold text-ink mb-12">What We Program</h2>
+          <h2 className="section-heading-modern mb-12">What We Program</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {capabilities.map((c, i) => (
-              <div key={c.title} className="card-hover group">
+              <div key={c.title} className="modern-panel card-hover-lift group card">
                 <div className="flex items-start gap-4">
                   <span className="font-mono text-2xl font-light text-sky/35 flex-shrink-0">
                     {String(i + 1).padStart(2, "0")}
@@ -143,10 +143,10 @@ export default function PLCPage() {
               <div className="section-label mb-6">
                 <span className="section-number">02</span> Platforms
               </div>
-              <h2 className="font-display text-4xl font-semibold text-ink mb-5">
+              <h2 className="section-heading-modern mb-5">
                 Supported PLC Brands
               </h2>
-              <p className="text-ink/55 leading-relaxed mb-8">
+              <p className="section-copy-muted mb-8">
                 We are vendor-agnostic — we select or work with whatever platform best fits your requirements and existing infrastructure.
               </p>
               <Link href="/components/contect" className="btn-primary">
@@ -159,7 +159,7 @@ export default function PLCPage() {
 
             <div className="space-y-3">
               {platforms.map((p) => (
-                <div key={p.brand} className="card flex flex-col sm:flex-row sm:items-center gap-4">
+                <div key={p.brand} className="modern-panel card-hover-lift group card flex flex-col sm:flex-row sm:items-center gap-4 hover:border-cerulean/35">
                   <div className="sm:w-44 flex-shrink-0">
                     <p className="font-semibold text-ink text-sm">{p.brand}</p>
                     <p className="text-xs text-cerulean/70 font-mono mt-0.5">{p.tools}</p>
@@ -180,7 +180,7 @@ export default function PLCPage() {
           <div className="section-label mb-8">
             <span className="section-number">03</span> Process
           </div>
-          <h2 className="font-display text-4xl font-semibold text-ink mb-12">How We Deliver</h2>
+          <h2 className="section-heading-modern mb-12">How We Deliver</h2>
           <div className="relative">
             <div className="hidden md:block absolute left-[23px] top-8 bottom-8 w-px bg-gradient-to-b from-cerulean/50 via-sky/30 to-transparent" />
             <div className="space-y-6">
@@ -189,7 +189,7 @@ export default function PLCPage() {
                   <div className="flex-shrink-0 w-12 h-12 rounded-full bg-cerulean text-white flex items-center justify-center font-mono text-sm font-semibold shadow-button relative z-10">
                     {p.step}
                   </div>
-                  <div className="card flex-grow">
+                  <div className="modern-panel card-hover-lift card flex-grow">
                     <h3 className="font-semibold text-ink mb-2">{p.title}</h3>
                     <p className="text-sm text-ink/55 leading-relaxed">{p.desc}</p>
                   </div>
@@ -206,7 +206,7 @@ export default function PLCPage() {
           <div className="section-label mb-8">
             <span className="section-number">04</span> Industries
           </div>
-          <h2 className="font-display text-4xl font-semibold text-ink mb-8">Sectors We Serve</h2>
+          <h2 className="section-heading-modern mb-8">Sectors We Serve</h2>
           <div className="flex flex-wrap gap-3">
             {sectors.map((s) => (
               <span key={s} className="tag bg-cloud text-ink/70 text-sm px-4 py-2 rounded-xl border border-sky/20">{s}</span>

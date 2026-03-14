@@ -24,6 +24,8 @@ const primaryServices = [
     tagline: "Industrial-grade automation",
     description: "Custom PLC programs for Siemens, Allen-Bradley, Mitsubishi and more. From single-station control to full plant-wide automation.",
     href: "/services/plc",
+    image: "/images/service1.jpg",
+    imageAlt: "PLC engineering team building automation controls",
     features: ["Ladder Logic & Structured Text", "Multi-platform Support", "Safety System Integration"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
@@ -40,6 +42,8 @@ const primaryServices = [
     tagline: "Connected ecosystems",
     description: "End-to-end IoT solutions — sensor selection, firmware development, edge computing, and cloud dashboards for real-time visibility.",
     href: "/services/iot",
+    image: "/images/iot.jpg",
+    imageAlt: "IoT devices connected with cloud dashboards",
     features: ["Embedded Firmware", "Edge & Cloud Processing", "Sensor & Gateway Integration"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
@@ -55,6 +59,8 @@ const primaryServices = [
     tagline: "Real-time visibility",
     description: "Robust SCADA platforms that give operators full visibility and control — built for uptime, security, and scalability.",
     href: "/services/scada",
+    image: "/images/service4.jpg",
+    imageAlt: "SCADA control room with monitoring displays",
     features: ["Custom HMI Design", "Historian & Reporting", "Remote Access & Alarms"],
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
@@ -86,6 +92,52 @@ const carouselSlides = [
   { src: '/assets/solar.png',   alt: 'Solar power systems' },
   { src: '/images/image3.jpg',  alt: 'Control systems' },
   { src: '/images/image4.jpg',  alt: 'Smart infrastructure' },
+];
+
+const heroVisualCards = [
+  {
+    title: "Live Process Monitoring",
+    subtitle: "SCADA + Analytics",
+    src: "/images/service6.jpg",
+    alt: "Operator monitoring industrial process analytics",
+  },
+  {
+    title: "Connected Energy Assets",
+    subtitle: "Solar + IoT Control",
+    src: "/images/solar3.webp",
+    alt: "Solar assets connected with automation network",
+  },
+];
+
+const impactShowcase = [
+  {
+    title: "Smart Manufacturing Cells",
+    metric: "27% Faster Throughput",
+    tag: "Manufacturing",
+    src: "/images/image6.png",
+    alt: "Smart manufacturing cell automation",
+  },
+  {
+    title: "Agriculture Control Systems",
+    metric: "35% Water Savings",
+    tag: "AgriTech",
+    src: "/images/service2.jpg",
+    alt: "Automated irrigation control deployment",
+  },
+  {
+    title: "Solar Farm Monitoring",
+    metric: "99.5% Uptime Tracking",
+    tag: "Energy",
+    src: "/images/solar2.webp",
+    alt: "Solar farm dashboards and telemetry",
+  },
+  {
+    title: "Railway Systems Reliability",
+    metric: "24/7 Remote Diagnostics",
+    tag: "Transport",
+    src: "/images/rail1.jpeg",
+    alt: "Railway automation and monitoring systems",
+  },
 ];
 
 /* Marquee tags — duplicated so the scroll looks infinite */
@@ -243,6 +295,29 @@ export default function HomePage() {
         clearProps: "transform,opacity",
       }
     );
+    ["#services-section", "#impact-section", "#why-section", "#more-services"].forEach((sectionId) => {
+      gsap.fromTo(`${sectionId} .section-intro`,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.55, ease: "power2.out",
+          scrollTrigger: { trigger: sectionId, start: "top 85%" },
+          clearProps: "transform,opacity",
+        }
+      );
+    });
+    gsap.fromTo(".impact-card",
+      { y: 34, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.11, duration: 0.6, ease: "power2.out",
+        scrollTrigger: { trigger: "#impact-section", start: "top 82%" },
+        clearProps: "transform,opacity",
+      }
+    );
+    gsap.fromTo(".about-visual",
+      { y: 20, scale: 0.98, opacity: 0 },
+      { y: 0, scale: 1, opacity: 1, stagger: 0.08, duration: 0.55, ease: "power2.out",
+        scrollTrigger: { trigger: "#why-section", start: "top 82%" },
+        clearProps: "transform,opacity",
+      }
+    );
   }, { scope: heroRef });
 
   return (
@@ -256,7 +331,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
         <div className="absolute -right-32 -top-20 w-[780px] h-[780px] rounded-full bg-gradient-to-bl from-sky/25 via-cerulean/10 to-transparent blur-3xl pointer-events-none" />
         <div className="absolute -left-24 bottom-0 w-[480px] h-[480px] rounded-full bg-gradient-to-tr from-steel/12 to-transparent blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_60%_40%,rgba(204,204,255,0.10),transparent)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_60%_40%,rgba(14,116,144,0.08),transparent)] pointer-events-none" />
 
         <div className="container-xl relative z-10 py-24 grid lg:grid-cols-2 gap-16 items-center">
           {/* Text column */}
@@ -296,8 +371,8 @@ export default function HomePage() {
           </div>
 
           {/* Carousel column */}
-          <div className="relative hidden lg:block">
-            <div className="relative h-[520px] rounded-3xl overflow-hidden shadow-[0_8px_60px_rgba(41,41,102,0.18)] ring-1 ring-sky/25">
+          <div className="relative">
+            <div className="relative h-[360px] sm:h-[420px] lg:h-[520px] rounded-3xl overflow-hidden shadow-[0_20px_50px_-24px_rgba(15,23,42,0.45)] ring-1 ring-slate-300/40">
               {carouselSlides.map((slide, i) => (
                 <div
                   key={i}
@@ -314,7 +389,7 @@ export default function HomePage() {
                   <button
                     key={i}
                     onClick={() => setActiveSlide(i)}
-                    className={`h-1.5 rounded-full transition-all duration-500 ${activeSlide === i ? "w-10 bg-white shadow-[0_0_8px_rgba(255,255,255,0.6)]" : "w-1.5 bg-white/35 hover:bg-white/60"}`}
+                    className={`h-1.5 rounded-full transition-all duration-500 ${activeSlide === i ? "w-10 bg-white shadow-[0_0_8px_rgba(15,23,42,0.3)]" : "w-1.5 bg-white/45 hover:bg-white/70"}`}
                     aria-label={`Slide ${i + 1}`}
                   />
                 ))}
@@ -337,12 +412,31 @@ export default function HomePage() {
               </div>
             </div>
 
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {heroVisualCards.map((card) => (
+                <div key={card.title} className="relative h-36 sm:h-40 rounded-2xl overflow-hidden ring-1 ring-sky/20 shadow-card">
+                  <Image src={card.src} alt={card.alt} fill className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/30 to-transparent" />
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-[10px] font-mono tracking-[0.16em] uppercase text-sky/80 mb-1">{card.subtitle}</p>
+                    <p className="text-sm font-semibold text-white leading-tight">{card.title}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              <span className="badge-indigo">Data-driven deployments</span>
+              <span className="badge-sky">Real-world reliability</span>
+              <span className="badge-violet">Fast commissioning</span>
+            </div>
+
             {/* Floating stat pill */}
-            <div className="absolute -right-6 top-16 stat-pill animate-float shadow-[0_4px_24px_rgba(92,92,153,0.2)]">
+            <div className="absolute -right-6 top-16 stat-pill animate-float shadow-[0_10px_30px_-18px_rgba(15,23,42,0.45)] hidden lg:flex">
               <span className="stat-pill-value">150+</span>
               <span className="stat-pill-label">Projects</span>
             </div>
-            <div className="absolute -left-6 bottom-20 stat-pill animate-float shadow-[0_4px_24px_rgba(92,92,153,0.2)]" style={{animationDelay:'2s'}}>
+            <div className="absolute -left-6 bottom-20 stat-pill animate-float shadow-[0_10px_30px_-18px_rgba(15,23,42,0.45)] hidden lg:flex" style={{animationDelay:'2s'}}>
               <span className="stat-pill-value">98%</span>
               <span className="stat-pill-label">Satisfaction</span>
             </div>
@@ -381,46 +475,59 @@ export default function HomePage() {
       ══════════════════════════════════════════════════ */}
       <section id="services-section" className="section bg-white">
         <div className="container-xl">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div className="section-intro flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <div>
               <div className="section-label mb-4">
                 <span className="section-number">01</span> Core Solutions
               </div>
-              <h2 className="font-display text-4xl md:text-5xl font-semibold text-ink">
+              <h2 className="section-heading-modern">
                 Our Primary Services
               </h2>
             </div>
-            <p className="text-ink/55 text-base max-w-sm md:text-right">
+            <p className="section-copy-muted max-w-md md:text-right">
               Industrial automation solutions engineered for reliability and long-term performance.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-5 lg:gap-6">
             {primaryServices.map((svc) => (
               <div
                 key={svc.id}
-                className="service-card-item group flex flex-col bg-white rounded-2xl border border-sky/20 shadow-card overflow-hidden transition-all duration-300 hover:shadow-card-hover hover:-translate-y-2 hover:border-cerulean/30"
+                className="service-card-item modern-panel card-hover-lift group relative flex flex-col bg-white rounded-2xl border border-slate-200/80 shadow-card overflow-hidden hover:shadow-card-hover hover:border-cerulean/35"
               >
                 {/* Gradient top accent */}
                 <div className="h-1 w-full bg-gradient-to-r from-cerulean via-steel to-sky opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-4 right-4 z-20 px-2 py-1 rounded-md bg-white/80 backdrop-blur text-[10px] font-mono tracking-widest text-steel/80 border border-slate-200/80">
+                  {svc.num}
+                </div>
 
-                <div className="p-7 flex flex-col flex-grow">
+                <div className="relative h-44 overflow-hidden">
+                  <Image
+                    src={svc.image}
+                    alt={svc.imageAlt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.08]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-ink/10 to-transparent" />
+                </div>
+
+                <div className="relative z-10 p-6 lg:p-7 flex flex-col flex-grow">
                   <div className="flex items-center justify-between mb-6">
-                    <div className="icon-wrap bg-cerulean/8 text-cerulean group-hover:bg-cerulean group-hover:text-white transition-all duration-300">
+                    <div className="icon-wrap bg-cerulean/10 text-cerulean group-hover:bg-cerulean group-hover:text-white group-hover:scale-105 group-hover:-translate-y-0.5 transition-all duration-300">
                       {svc.icon}
                     </div>
-                    <span className="font-mono text-3xl font-light text-sky/30 group-hover:text-cerulean/30 transition-colors duration-300">{svc.num}</span>
+                    <span className="font-mono text-3xl font-light text-sky/35 group-hover:text-cerulean/35 transition-colors duration-300">{svc.num}</span>
                   </div>
 
                   <span className="badge-indigo mb-3">{svc.tagline}</span>
-                  <h3 className="font-display text-2xl font-semibold text-ink mb-3 group-hover:text-cerulean transition-colors duration-300">
+                  <h3 className="font-display text-2xl tracking-[-0.01em] font-semibold text-ink mb-3 group-hover:text-cerulean transition-colors duration-300">
                     {svc.title}
                   </h3>
-                  <p className="text-sm text-ink/55 leading-relaxed mb-6 flex-grow">{svc.description}</p>
+                  <p className="text-sm text-ink/60 leading-relaxed mb-6 flex-grow">{svc.description}</p>
 
                   <ul className="space-y-2 mb-8">
                     {svc.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2.5 text-sm text-ink/65">
+                      <li key={f} className="flex items-center gap-2.5 text-[0.92rem] text-ink/70">
                         <svg className="w-4 h-4 text-cerulean/70 flex-shrink-0" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
                           <path d="M3 8l3.5 3.5L13 4" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
@@ -431,10 +538,10 @@ export default function HomePage() {
 
                   <Link
                     href={svc.href}
-                    className="mt-auto flex items-center gap-2 text-sm font-medium text-cerulean group-hover:gap-3 transition-all duration-200"
+                    className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-cerulean group-hover:text-ink transition-all duration-200"
                   >
                     Learn More
-                    <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </Link>
@@ -446,36 +553,74 @@ export default function HomePage() {
       </section>
 
       {/* ══════════════════════════════════════════════════
+          IMPACT GALLERY
+      ══════════════════════════════════════════════════ */}
+      <section id="impact-section" className="section bg-cloud">
+        <div className="container-xl">
+          <div className="section-intro flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="section-label mb-4">
+                <span className="section-number">02</span> Industry Impact
+              </div>
+              <h2 className="section-heading-modern">
+                Visual Highlights from Deployments
+              </h2>
+            </div>
+            <p className="section-copy-muted max-w-md">
+              From manufacturing to solar and railway systems, our field deployments are engineered for measurable performance outcomes.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-6">
+            {impactShowcase.map((item) => (
+              <article key={item.title} className="impact-card modern-panel card-hover-lift relative h-72 sm:h-80 rounded-3xl overflow-hidden ring-1 ring-slate-300/35 shadow-card group hover:shadow-card-hover">
+                <Image src={item.src} alt={item.alt} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/45 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-cerulean/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-4 left-4 transition-transform duration-300 group-hover:translate-y-0.5">
+                  <span className="badge-sky">{item.tag}</span>
+                </div>
+                <div className="absolute bottom-5 left-5 right-5 transition-all duration-300 group-hover:translate-y-[-2px]">
+                  <p className="text-[11px] font-mono tracking-[0.14em] uppercase text-sky/80 mb-2">{item.metric}</p>
+                  <h3 className="font-display text-2xl text-white leading-tight">{item.title}</h3>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════
           WHY US
       ══════════════════════════════════════════════════ */}
       <section id="why-section" className="section bg-cloud overflow-hidden">
         <div className="container-xl">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 xl:gap-16 items-center">
             {/* Left text */}
-            <div>
+            <div className="section-intro">
               <div className="section-label mb-6">
-                <span className="section-number">02</span> About Us
+                <span className="section-number">03</span> About Us
               </div>
-              <h2 className="font-display text-4xl md:text-5xl font-semibold text-ink mb-6 text-balance">
+              <h2 className="section-heading-modern mb-6 text-balance">
                 Why Space Auto Tech?
               </h2>
-              <p className="text-ink/60 leading-relaxed mb-5">
+              <p className="section-copy-muted mb-5">
                 Space Auto Tech stands at the forefront of industrial and digital automation, delivering intelligent systems that transcend conventional boundaries. We combine engineering precision with cutting-edge technology.
               </p>
-              <p className="text-ink/60 leading-relaxed mb-8">
+              <p className="section-copy-muted mb-8">
                 Our mission is to simplify complexity, enhance operational efficiency, and drive sustainable growth through intelligent automation — helping businesses thrive in the age of Industry 4.0.
               </p>
 
               {/* Why cards */}
-              <div className="grid grid-cols-2 gap-3 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                 {whyUs.map((item) => (
-                  <div key={item.title} className="why-card flex gap-3 items-start p-4 rounded-xl bg-white border border-sky/15 hover:border-cerulean/30 hover:shadow-card transition-all duration-300 group">
-                    <div className="w-8 h-8 rounded-lg bg-cerulean/8 flex items-center justify-center text-cerulean group-hover:bg-cerulean group-hover:text-white transition-all duration-300 flex-shrink-0">
+                  <div key={item.title} className="why-card modern-panel card-hover-lift flex gap-3 items-start p-4 rounded-xl bg-white border border-slate-200/80 hover:border-cerulean/35 hover:shadow-card transition-all duration-300 group">
+                    <div className="w-9 h-9 rounded-lg bg-cerulean/10 flex items-center justify-center text-cerulean group-hover:bg-cerulean group-hover:text-white group-hover:scale-105 group-hover:-rotate-3 transition-all duration-300 flex-shrink-0">
                       {item.icon}
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-ink">{item.title}</p>
-                      <p className="text-xs text-ink/50 mt-0.5 leading-relaxed">{item.desc}</p>
+                      <p className="text-sm font-semibold tracking-[-0.01em] text-ink">{item.title}</p>
+                      <p className="text-xs sm:text-[0.8rem] text-ink/55 mt-0.5 leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -489,6 +634,27 @@ export default function HomePage() {
 
             {/* Right: quote card */}
             <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="about-visual relative col-span-2 h-52 rounded-3xl overflow-hidden ring-1 ring-sky/20 shadow-card">
+                  <Image src="/images/about-us.jpg" alt="Automation team collaborating on industrial solutions" fill className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/65 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <p className="text-[10px] font-mono tracking-[0.16em] uppercase text-sky/80 mb-1">Engineering Culture</p>
+                    <p className="text-base font-semibold text-white">Built by field-tested automation specialists</p>
+                  </div>
+                </div>
+                <div className="about-visual relative h-36 rounded-2xl overflow-hidden ring-1 ring-sky/20 shadow-card">
+                  <Image src="/images/vision1.jpg" alt="Long-term vision for intelligent industrial ecosystems" fill className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
+                  <p className="absolute bottom-3 left-3 text-xs font-semibold text-white">Vision-led design</p>
+                </div>
+                <div className="about-visual relative h-36 rounded-2xl overflow-hidden ring-1 ring-sky/20 shadow-card">
+                  <Image src="/images/mission.jpg" alt="Mission driven deployment planning and execution" fill className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
+                  <p className="absolute bottom-3 left-3 text-xs font-semibold text-white">Execution focused</p>
+                </div>
+              </div>
+
               <div className="bg-ink rounded-3xl p-8 text-white relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-cerulean/20 to-transparent rounded-full blur-2xl pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-sky/10 to-transparent rounded-full blur-2xl pointer-events-none" />
@@ -533,25 +699,26 @@ export default function HomePage() {
       ══════════════════════════════════════════════════ */}
       <section id="more-services" className="section bg-white">
         <div className="container-xl">
-          <div className="text-center mb-12">
+          <div className="section-intro text-center mb-12">
             <div className="section-label mx-auto mb-4">
-              <span className="section-number">03</span> More Solutions
+              <span className="section-number">04</span> More Solutions
             </div>
-            <h2 className="font-display text-4xl font-semibold text-ink">Complete Service Portfolio</h2>
-            <p className="text-ink/50 mt-3 max-w-md mx-auto text-sm">Across six key verticals, we engineer automation that works reliably in the real world.</p>
+            <h2 className="section-heading-modern">Complete Service Portfolio</h2>
+            <p className="section-copy-muted mt-3 max-w-md mx-auto">Across six key verticals, we engineer automation that works reliably in the real world.</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {additionalServices.map((svc) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+            {additionalServices.map((svc, idx) => (
               <Link
                 key={svc.href}
                 href={svc.href}
-                className="add-svc-card group card-outlined flex flex-col items-center gap-3 py-7 text-center"
+                className="add-svc-card modern-panel card-hover-lift group relative bg-white border border-slate-200/85 rounded-2xl px-4 py-7 text-center shadow-card hover:shadow-card-hover hover:border-cerulean/35"
               >
-                <div className="icon-wrap-primary group-hover:bg-cerulean group-hover:text-white transition-all duration-300">
+                <span className="absolute top-3 left-3 text-[10px] font-mono tracking-widest uppercase text-steel/65">0{idx + 1}</span>
+                <div className="icon-wrap-primary mx-auto group-hover:bg-cerulean group-hover:text-white group-hover:scale-105 group-hover:-translate-y-0.5 transition-all duration-300">
                   <ServiceIcon type={svc.icon} />
                 </div>
-                <span className="text-sm font-medium text-ink/70 group-hover:text-cerulean transition-colors leading-tight">{svc.title}</span>
+                <span className="text-sm font-semibold text-ink/75 group-hover:text-cerulean transition-colors leading-tight">{svc.title}</span>
               </Link>
             ))}
           </div>
@@ -566,12 +733,12 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <div className="section-label mb-6">
-                <span className="section-number">04</span> Technology
+                <span className="section-number">05</span> Technology
               </div>
-              <h2 className="font-display text-4xl md:text-5xl font-semibold text-ink mb-5">
+              <h2 className="section-heading-modern mb-5">
                 Platforms We Master
               </h2>
-              <p className="text-ink/55 leading-relaxed mb-8 max-w-md">
+              <p className="section-copy-muted mb-8 max-w-md">
                 We work across the full spectrum of industrial automation technology — from field devices to cloud dashboards.
               </p>
               <Link href="/services" className="btn-primary">
@@ -584,14 +751,20 @@ export default function HomePage() {
 
             <div className="space-y-3">
               {techStack.map((row) => (
-                <div key={row.category} className="tech-row card flex flex-col sm:flex-row sm:items-center gap-4 hover:border-cerulean/30 transition-colors duration-200">
-                  <div className="sm:w-36 flex-shrink-0">
-                    <p className="text-[10px] font-mono font-semibold text-sky/55 tracking-widest uppercase mb-1">{row.category}</p>
+                <div key={row.category} className="tech-row modern-panel card-hover-lift group relative bg-white rounded-2xl border border-slate-200/85 shadow-card px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-4 hover:border-cerulean/35 hover:shadow-card-hover">
+                  <div className="sm:w-40 flex-shrink-0">
+                    <p className="text-[10px] font-mono font-semibold text-steel/70 tracking-widest uppercase mb-1">{row.category}</p>
+                    <p className="text-xs text-ink/45">Core stack</p>
                   </div>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 flex-1">
                     {row.items.map((item) => (
-                      <span key={item} className="tag-light text-xs">{item}</span>
+                      <span key={item} className="inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-md bg-slate-100 text-ink/70 border border-slate-200/70">{item}</span>
                     ))}
+                  </div>
+                  <div className="hidden sm:flex items-center justify-center w-8 h-8 rounded-full bg-ink/5 text-ink/55 group-hover:bg-cerulean group-hover:text-white transition-all duration-300">
+                    <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-300" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                   </div>
                 </div>
               ))}

@@ -62,10 +62,10 @@ export default function IoTPage() {
                 <div className="section-label">IoT Development</div>
                 <span className="tag-blue">Connected Systems</span>
               </div>
-              <h1 className="font-display text-5xl md:text-6xl font-semibold text-ink mb-6 text-balance">
+              <h1 className="section-heading-modern mb-6 text-balance">
                 Industrial Internet of Things Engineering
               </h1>
-              <p className="text-xl text-ink/55 leading-relaxed max-w-xl">
+              <p className="section-copy-muted text-base sm:text-lg max-w-xl">
                 Connect every sensor, machine, and system in your facility to a unified data layer — enabling real-time visibility, analytics, and automated response.
               </p>
             </div>
@@ -83,10 +83,10 @@ export default function IoTPage() {
           <div className="section-label mb-8">
             <span className="section-number">01</span> Capabilities
           </div>
-          <h2 className="font-display text-4xl font-semibold text-ink mb-12">Full-Stack IoT Engineering</h2>
+          <h2 className="section-heading-modern mb-12">Full-Stack IoT Engineering</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {capabilities.map((c, i) => (
-              <div key={c.title} className="card-hover group">
+              <div key={c.title} className="modern-panel card-hover-lift card group">
                 <div className="w-8 h-8 rounded-lg bg-steel/10 flex items-center justify-center mb-4">
                   <span className="font-mono text-xs text-steel/60">{String(i + 1).padStart(2, "0")}</span>
                 </div>
@@ -106,20 +106,20 @@ export default function IoTPage() {
               <div className="section-label mb-6">
                 <span className="section-number">02</span> Technology
               </div>
-              <h2 className="font-display text-4xl font-semibold text-ink mb-5">
+              <h2 className="section-heading-modern mb-5">
                 Our IoT Technology Stack
               </h2>
-              <p className="text-ink/55 leading-relaxed mb-4">
+              <p className="section-copy-muted mb-4">
                 We choose technologies based on your reliability, security, and scalability requirements — not vendor preference. Open standards and proven platforms always.
               </p>
-              <p className="text-ink/55 leading-relaxed">
+              <p className="section-copy-muted">
                 Every solution is architected for long-term maintainability, with documented APIs and no lock-in.
               </p>
             </div>
 
             <div className="space-y-3">
               {techStack.map((row) => (
-                <div key={row.layer} className="card flex flex-col sm:flex-row sm:items-start gap-4">
+                <div key={row.layer} className="modern-panel card-hover-lift group card flex flex-col sm:flex-row sm:items-start gap-4 hover:border-cerulean/35">
                   <div className="sm:w-28 flex-shrink-0">
                     <p className="font-mono text-[10px] text-sky/55 uppercase tracking-widest">{row.layer}</p>
                   </div>
@@ -139,10 +139,10 @@ export default function IoTPage() {
           <div className="section-label mb-8">
             <span className="section-number">03</span> Use Cases
           </div>
-          <h2 className="font-display text-4xl font-semibold text-ink mb-12">Where We Deploy</h2>
+          <h2 className="section-heading-modern mb-12">Where We Deploy</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {useCases.map((uc) => (
-              <div key={uc.title} className="card border-l-4 border-sky hover:border-cerulean transition-colors">
+              <div key={uc.title} className="modern-panel card-hover-lift card border-l-4 border-sky hover:border-cerulean transition-colors">
                 <h3 className="font-semibold text-ink mb-3">{uc.title}</h3>
                 <p className="text-sm text-ink/55 leading-relaxed">{uc.desc}</p>
               </div>
@@ -157,7 +157,7 @@ export default function IoTPage() {
           <div className="section-label mb-8">
             <span className="section-number">04</span> Architecture
           </div>
-          <h2 className="font-display text-4xl font-semibold text-ink mb-10">A Layered IoT Architecture</h2>
+          <h2 className="section-heading-modern mb-10">A Layered IoT Architecture</h2>
           <div className="space-y-4">
             {[
               { layer: "Field Layer",  desc: "Physical sensors, actuators, meters, and PLCs gathering raw process data.", color: "forest" },
@@ -166,7 +166,7 @@ export default function IoTPage() {
               { layer: "Cloud / Platform", desc: "Time-series databases, analytics, rule engines, and REST APIs for system integration.", color: "sky" },
               { layer: "Presentation", desc: "Web and mobile dashboards providing real-time visibility and historical reporting.", color: "cerulean" },
             ].map((item, i) => (
-              <div key={item.layer} className="card flex items-center gap-5">
+              <div key={item.layer} className="modern-panel card-hover-lift card flex items-center gap-5">
                 <div className="flex-shrink-0 w-8 text-center">
                   <span className="font-mono text-lg font-light text-sky/40">{i + 1}</span>
                 </div>

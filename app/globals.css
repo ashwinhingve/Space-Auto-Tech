@@ -3,38 +3,38 @@
 @tailwind utilities;
 
 /* ─── Google Fonts ─────────────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ─── CSS Design Tokens ─────────────────────────────────────────────────────── */
 @layer base {
   :root {
-    /* Brand palette — "Under the Moonlight" periwinkle — RGB triplets for Tailwind opacity modifier support */
-    --color-forest:   112 112 170;  /* #7070AA — harmonised violet */
-    --color-cerulean: 92 92 153;    /* #5C5C99 — medium indigo */
-    --color-steel:    163 163 204;  /* #A3A3CC — muted lavender */
-    --color-sky:      204 204 255;  /* #CCCCFF — light periwinkle */
-    --color-cloud:    240 240 255;  /* #F0F0FF — soft periwinkle white */
-    --color-ink:      41 41 102;    /* #292966 — deep navy */
+    /* Brand palette — industrial slate with steel-cyan accents */
+    --color-forest:   22 101 72;    /* #166548 */
+    --color-cerulean: 14 116 144;   /* #0E7490 */
+    --color-steel:    100 116 139;  /* #64748B */
+    --color-sky:      203 213 225;  /* #CBD5E1 */
+    --color-cloud:    248 250 252;  /* #F8FAFC */
+    --color-ink:      15 23 42;     /* #0F172A */
 
-    /* Semantic tokens — remapped to periwinkle hues */
-    --background: 240 100% 97%;    /* #F0F0FF-ish soft periwinkle page bg */
-    --foreground:  240 43% 28%;    /* #292966 deep navy text */
+    /* Semantic tokens */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
     --card:        0 0% 100%;
-    --card-foreground: 240 43% 28%;
-    --primary:     240 25% 48%;    /* #5C5C99 medium indigo */
+    --card-foreground: 222 47% 11%;
+    --primary:     192 82% 32%;
     --primary-foreground: 0 0% 100%;
-    --secondary:   240 100% 93%;   /* light periwinkle */
-    --secondary-foreground: 240 43% 28%;
-    --muted:       240 50% 93%;
-    --muted-foreground: 240 20% 50%;
-    --accent:      240 100% 93%;
-    --accent-foreground: 240 43% 28%;
+    --secondary:   210 20% 92%;
+    --secondary-foreground: 222 47% 11%;
+    --muted:       210 18% 92%;
+    --muted-foreground: 215 16% 36%;
+    --accent:      192 35% 90%;
+    --accent-foreground: 222 47% 11%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --border:      240 60% 85%;
-    --input:       240 60% 85%;
-    --ring:        240 25% 48%;
-    --radius:      0.75rem;
+    --border:      214 26% 86%;
+    --input:       214 26% 86%;
+    --ring:        192 82% 32%;
+    --radius:      0.65rem;
   }
 }
 
@@ -52,9 +52,9 @@ html {
 }
 
 body {
-  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
-  background-color: #F0F0FF;
-  color: #292966;
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  background-color: #F8FAFC;
+  color: #0F172A;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -62,13 +62,13 @@ body {
 
 /* ─── Typography Scale ──────────────────────────────────────────────────────── */
 h1, h2, h3 {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Sora', 'Manrope', system-ui, sans-serif;
   line-height: 1.15;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 h4, h5, h6 {
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Manrope', system-ui, sans-serif;
   font-weight: 600;
   line-height: 1.3;
 }
@@ -78,14 +78,14 @@ h4, h5, h6 {
 
   /* — Buttons — */
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-cerulean text-white font-medium text-sm
-           px-6 py-3 rounded-xl transition-all duration-200
+    @apply inline-flex items-center gap-2 bg-cerulean text-white font-semibold text-sm
+           px-6 py-3 rounded-lg transition-all duration-200
            hover:bg-cerulean-dark hover:shadow-button hover:-translate-y-px active:scale-[0.97] active:translate-y-0
            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cerulean focus-visible:ring-offset-2;
   }
   .btn-secondary {
-    @apply inline-flex items-center gap-2 bg-transparent text-cerulean font-medium text-sm
-           px-6 py-3 rounded-xl border border-cerulean/40 transition-all duration-200
+    @apply inline-flex items-center gap-2 bg-transparent text-cerulean font-semibold text-sm
+           px-6 py-3 rounded-lg border border-cerulean/40 transition-all duration-200
            hover:bg-cerulean/8 hover:border-cerulean hover:-translate-y-px active:scale-[0.97] active:translate-y-0
            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cerulean focus-visible:ring-offset-2;
   }
@@ -96,12 +96,12 @@ h4, h5, h6 {
   }
   .btn-white {
     @apply inline-flex items-center gap-2 bg-white text-cerulean font-semibold text-sm
-           px-6 py-3 rounded-xl transition-all duration-200
+           px-6 py-3 rounded-lg transition-all duration-200
            hover:bg-cloud hover:shadow-lg hover:-translate-y-px active:scale-[0.97] active:translate-y-0;
   }
   .btn-outline-white {
     @apply inline-flex items-center gap-2 bg-transparent text-white font-medium text-sm
-           px-6 py-3 rounded-xl border border-white/40 transition-all duration-200
+           px-6 py-3 rounded-lg border border-white/40 transition-all duration-200
            hover:bg-white/10 hover:border-white/70 hover:-translate-y-px active:scale-[0.97] active:translate-y-0;
   }
 
@@ -125,6 +125,28 @@ h4, h5, h6 {
     @apply bg-transparent rounded-2xl p-6 border border-sky/30 transition-all duration-300
            hover:border-cerulean/50 hover:bg-cerulean/5 hover:-translate-y-1;
   }
+  .card-hover-lift {
+    transition: transform 320ms cubic-bezier(.22,1,.36,1), box-shadow 320ms ease, border-color 220ms ease;
+  }
+  .card-hover-lift:hover {
+    transform: translateY(-8px);
+  }
+  .modern-panel {
+    position: relative;
+    overflow: hidden;
+  }
+  .modern-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 280ms ease;
+    background: linear-gradient(135deg, rgba(14,116,144,0.08), transparent 45%);
+  }
+  .modern-panel:hover::after {
+    opacity: 1;
+  }
 
   /* — Containers & Layout — */
   .container-xl {
@@ -143,10 +165,16 @@ h4, h5, h6 {
   /* — Section Labels — */
   .section-label {
     @apply inline-flex items-center gap-2 text-xs font-mono font-medium tracking-widest
-           uppercase text-cerulean bg-cerulean/8 px-3 py-1.5 rounded-full border border-cerulean/20;
+           uppercase text-cerulean bg-cerulean/8 px-3 py-1.5 rounded-md border border-cerulean/20;
   }
   .section-number {
     @apply font-mono text-sm font-medium text-sky/70 tracking-widest;
+  }
+  .section-heading-modern {
+    @apply font-display text-3xl sm:text-4xl lg:text-[2.85rem] font-semibold tracking-[-0.02em] text-ink leading-[1.08];
+  }
+  .section-copy-muted {
+    @apply text-sm sm:text-base text-ink/60 leading-relaxed;
   }
 
   /* — Form Elements — */
@@ -164,11 +192,11 @@ h4, h5, h6 {
 
   /* — Navigation — */
   .nav-link {
-    @apply relative text-sm font-medium text-ink/70 px-3 py-1.5 rounded-lg transition-all duration-200
-           hover:text-cerulean hover:bg-cerulean/8;
+    @apply relative text-sm font-semibold text-ink/70 px-3 py-1.5 rounded-md transition-all duration-200
+           hover:text-ink hover:bg-ink/5;
   }
   .nav-link-active {
-    @apply text-cerulean bg-cerulean/10;
+    @apply text-ink bg-ink/10;
   }
 
   /* — Animated underline link — */
@@ -227,7 +255,7 @@ h4, h5, h6 {
 
   /* — Gradient Text — */
   .text-gradient {
-    @apply bg-gradient-to-r from-cerulean to-steel bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-ink to-steel bg-clip-text text-transparent;
   }
   .text-gradient-light {
     @apply bg-gradient-to-r from-sky to-cloud bg-clip-text text-transparent;
@@ -236,12 +264,12 @@ h4, h5, h6 {
   /* — Hero Geometric Pattern BG — */
   .bg-grid-pattern {
     background-image:
-      linear-gradient(rgba(204,204,255,0.18) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(204,204,255,0.18) 1px, transparent 1px);
+      linear-gradient(rgba(148,163,184,0.17) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148,163,184,0.17) 1px, transparent 1px);
     background-size: 40px 40px;
   }
   .bg-dot-pattern {
-    background-image: radial-gradient(circle, rgba(204,204,255,0.35) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(148,163,184,0.35) 1px, transparent 1px);
     background-size: 28px 28px;
   }
 
@@ -250,7 +278,7 @@ h4, h5, h6 {
     transition: box-shadow 0.35s ease, transform 0.35s ease;
   }
   .glow-hover:hover {
-    box-shadow: 0 0 0 3px rgba(92,92,153,0.18), 0 8px 32px rgba(92,92,153,0.18);
+    box-shadow: 0 0 0 3px rgba(14,116,144,0.18), 0 8px 30px rgba(15,23,42,0.16);
     transform: translateY(-2px);
   }
 
@@ -300,9 +328,9 @@ h4, h5, h6 {
 
   /* — Glass dark (dark overlay glass) — */
   .glass-dark {
-    background: rgba(41, 41, 102, 0.72);
+    background: rgba(15, 23, 42, 0.78);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(204, 204, 255, 0.12);
+    border: 1px solid rgba(203, 213, 225, 0.16);
     @apply rounded-2xl;
   }
 
@@ -363,19 +391,19 @@ h4, h5, h6 {
 
 /* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar        { width: 8px; height: 8px; }
-::-webkit-scrollbar-track  { background: #F0F0FF; }
-::-webkit-scrollbar-thumb  { background: rgba(92,92,153,0.4); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(92,92,153,0.7); }
+::-webkit-scrollbar-track  { background: #F1F5F9; }
+::-webkit-scrollbar-thumb  { background: rgba(71,85,105,0.45); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(51,65,85,0.65); }
 
 /* ─── Selection ─────────────────────────────────────────────────────────────── */
 ::selection {
-  background-color: rgba(204,204,255,0.5);
-  color: #292966;
+  background-color: rgba(14,116,144,0.20);
+  color: #0F172A;
 }
 
 /* ─── Focus ring reset ───────────────────────────────────────────────────────── */
 :focus-visible {
-  outline: 2px solid rgba(92,92,153,0.7);
+  outline: 2px solid rgba(14,116,144,0.65);
   outline-offset: 3px;
 }
 

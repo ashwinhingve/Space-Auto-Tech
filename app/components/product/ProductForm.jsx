@@ -1,4 +1,3 @@
-// components/ProductForm.js
 import { useState } from "react";
 
 const ProductForm = ({ onSave }) => {
@@ -22,55 +21,32 @@ const ProductForm = ({ onSave }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 border rounded-lg space-y-4">
-      <input
-        type="text"
-        name="id"
-        value={product.id}
-        onChange={handleChange}
-        placeholder="ID"
-        className="w-full p-2 border rounded"
-        required
-      />
-      <input
-        type="text"
-        name="category"
-        value={product.category}
-        onChange={handleChange}
-        placeholder="Category"
-        className="w-full p-2 border rounded"
-        required
-      />
-      <input
-        type="text"
-        name="name"
-        value={product.name}
-        onChange={handleChange}
-        placeholder="Name"
-        className="w-full p-2 border rounded"
-        required
-      />
-      <input
-        type="text"
-        name="price"
-        value={product.price}
-        onChange={handleChange}
-        placeholder="Price"
-        className="w-full p-2 border rounded"
-        required
-      />
-      <input
-        type="url"
-        name="image"
-        value={product.image}
-        onChange={handleChange}
-        placeholder="Image URL"
-        className="w-full p-2 border rounded"
-        required
-      />
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded">
-        Submit
-      </button>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label className="form-label" htmlFor="id">Product ID</label>
+          <input id="id" type="text" name="id" value={product.id} onChange={handleChange} placeholder="ID" className="form-input" required />
+        </div>
+        <div>
+          <label className="form-label" htmlFor="category">Category</label>
+          <input id="category" type="text" name="category" value={product.category} onChange={handleChange} placeholder="Category" className="form-input" required />
+        </div>
+      </div>
+      <div>
+        <label className="form-label" htmlFor="name">Name</label>
+        <input id="name" type="text" name="name" value={product.name} onChange={handleChange} placeholder="Name" className="form-input" required />
+      </div>
+      <div className="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label className="form-label" htmlFor="price">Price</label>
+          <input id="price" type="text" name="price" value={product.price} onChange={handleChange} placeholder="Price" className="form-input" required />
+        </div>
+        <div>
+          <label className="form-label" htmlFor="image">Image URL</label>
+          <input id="image" type="url" name="image" value={product.image} onChange={handleChange} placeholder="Image URL" className="form-input" required />
+        </div>
+      </div>
+      <button type="submit" className="btn-primary">Save Product</button>
     </form>
   );
 };

@@ -52,10 +52,10 @@ export default function SCADAPage() {
                 </div>
                 <span className="tag bg-sky/15 text-sky border border-sky/20">Real-Time Control</span>
               </div>
-              <h1 className="font-display text-5xl md:text-6xl font-semibold text-white mb-6 text-balance leading-[1.08]">
+              <h1 className="section-heading-modern text-white mb-6 text-balance leading-[1.08]">
                 Supervisory Control & Data Acquisition Systems
               </h1>
-              <p className="text-xl text-white/60 leading-relaxed max-w-xl">
+              <p className="text-base sm:text-lg text-white/65 leading-relaxed max-w-xl">
                 Give your operators the visibility and control they need. Our SCADA platforms are built for industrial-grade reliability, security, and long operational life.
               </p>
             </div>
@@ -83,10 +83,10 @@ export default function SCADAPage() {
           <div className="section-label mb-8">
             <span className="section-number">01</span> Features
           </div>
-          <h2 className="font-display text-4xl font-semibold text-ink mb-12">What&apos;s Included</h2>
+          <h2 className="section-heading-modern mb-12">What&apos;s Included</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {features.map((f) => (
-              <div key={f.title} className="card-hover group">
+              <div key={f.title} className="modern-panel card-hover-lift card group">
                 <div className="w-8 h-0.5 bg-cerulean/30 group-hover:bg-cerulean group-hover:w-12 transition-all duration-300 mb-4 rounded-full" />
                 <h3 className="font-semibold text-ink text-sm mb-2 group-hover:text-cerulean transition-colors">{f.title}</h3>
                 <p className="text-xs text-ink/50 leading-relaxed">{f.desc}</p>
@@ -104,19 +104,19 @@ export default function SCADAPage() {
               <div className="section-label mb-6">
                 <span className="section-number">02</span> Platforms
               </div>
-              <h2 className="font-display text-4xl font-semibold text-ink mb-5">
+              <h2 className="section-heading-modern mb-5">
                 SCADA Platforms We Deploy
               </h2>
-              <p className="text-ink/55 leading-relaxed mb-4">
+              <p className="section-copy-muted mb-4">
                 We evaluate and recommend the right platform based on your process complexity, connectivity, licencing model, and long-term support requirements.
               </p>
-              <p className="text-ink/55 leading-relaxed">
+              <p className="section-copy-muted">
                 Where standard platforms don&apos;t fit, we build custom web-based SCADA using modern open-source components with full source code ownership for the client.
               </p>
             </div>
             <div className="space-y-3">
               {platforms.map((p) => (
-                <div key={p.name} className="card flex items-start gap-4">
+                <div key={p.name} className="modern-panel card-hover-lift group card flex items-start gap-4 hover:border-cerulean/35">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <h4 className="font-semibold text-ink text-sm">{p.name}</h4>
@@ -137,10 +137,10 @@ export default function SCADAPage() {
           <div className="section-label mb-8">
             <span className="section-number">03</span> Applications
           </div>
-          <h2 className="font-display text-4xl font-semibold text-ink mb-12">Industry Applications</h2>
+          <h2 className="section-heading-modern mb-12">Industry Applications</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {sectors.map((sector) => (
-              <div key={sector.title} className="card-hover">
+              <div key={sector.title} className="modern-panel card-hover-lift card-hover">
                 <h3 className="font-semibold text-ink text-sm mb-4 pb-3 border-b border-sky/20">{sector.title}</h3>
                 <ul className="space-y-2">
                   {sector.items.map((item) => (
@@ -162,7 +162,7 @@ export default function SCADAPage() {
           <div className="section-label mx-auto mb-6">
             <span className="section-number">04</span> Security
           </div>
-          <h2 className="font-display text-4xl font-semibold text-ink mb-5">
+          <h2 className="section-heading-modern mb-5">
             Security is Non-Negotiable
           </h2>
           <p className="text-ink/55 leading-relaxed mb-10 text-lg">

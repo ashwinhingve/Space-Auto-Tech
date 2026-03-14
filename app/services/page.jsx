@@ -67,13 +67,14 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="relative bg-white overflow-hidden border-b border-sky/15">
         <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
+        <div className="absolute -right-20 -top-20 w-[420px] h-[420px] rounded-full bg-gradient-to-bl from-sky/25 via-cerulean/12 to-transparent blur-3xl pointer-events-none" />
         <div className="container-xl relative py-20 md:py-28">
           <div className="max-w-2xl">
             <div className="section-label mb-5">Services & Solutions</div>
-            <h1 className="font-display text-5xl md:text-6xl font-semibold text-ink mb-6 text-balance">
+            <h1 className="section-heading-modern mb-6 text-balance">
               Complete Industrial Automation Portfolio
             </h1>
-            <p className="text-xl text-ink/55 leading-relaxed">
+            <p className="section-copy-muted text-base sm:text-lg">
               From embedded PLCs on the factory floor to cloud SCADA dashboards in your office — Space Auto Tech engineers the full automation stack.
             </p>
           </div>
@@ -91,7 +92,7 @@ export default function ServicesPage() {
               <Link
                 key={svc.href}
                 href={svc.href}
-                className="group card flex flex-col md:flex-row md:items-center gap-6 hover:border-cerulean/40 hover:shadow-card-hover transition-all duration-300"
+                className="group modern-panel card-hover-lift card flex flex-col md:flex-row md:items-center gap-6 hover:border-cerulean/40 hover:shadow-card-hover transition-all duration-300"
               >
                 {/* Number */}
                 <span className="font-mono text-4xl font-light text-sky/30 flex-shrink-0 hidden md:block w-12">{svc.num}</span>
@@ -132,12 +133,13 @@ export default function ServicesPage() {
             <span className="section-number">02</span> Additional Solutions
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {moreServices.map((svc) => (
+            {moreServices.map((svc, idx) => (
               <Link
                 key={svc.href}
                 href={svc.href}
-                className="group card-outlined flex flex-col gap-3 h-full hover:shadow-card"
+                className="group modern-panel card-hover-lift bg-white rounded-2xl border border-slate-200/85 p-5 flex flex-col gap-3 h-full shadow-card hover:shadow-card-hover hover:border-cerulean/35"
               >
+                <span className="text-[10px] font-mono tracking-widest uppercase text-steel/65">0{idx + 1}</span>
                 <h3 className="font-semibold text-ink text-sm group-hover:text-cerulean transition-colors">{svc.title}</h3>
                 <p className="text-xs text-ink/50 leading-relaxed flex-grow">{svc.desc}</p>
                 <span className="flex items-center gap-1 text-xs text-cerulean/60 group-hover:text-cerulean transition-colors">

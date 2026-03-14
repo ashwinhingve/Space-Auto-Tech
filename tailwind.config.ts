@@ -17,13 +17,13 @@ export default {
         sky:      'rgb(var(--color-sky) / <alpha-value>)',
         cloud:    'rgb(var(--color-cloud) / <alpha-value>)',
         ink:      'rgb(var(--color-ink) / <alpha-value>)',
-        // Derived shades (plain hex, no opacity modifier needed) — "Under the Moonlight"
-        'cerulean-dark':  '#3d3d77',
-        'cerulean-light': '#7070AA',
-        'steel-light':    '#BBBBDD',
-        'forest-light':   '#8888BB',
-        'sky-light':      '#DDDDF5',
-        'ink-soft':       '#3b3b7a',
+        // Derived shades (plain hex, no opacity modifier needed) — industrial neutral palette
+        'cerulean-dark':  '#0f4f68',
+        'cerulean-light': '#1d6f8b',
+        'steel-light':    '#d8e1ea',
+        'forest-light':   '#2f7d5c',
+        'sky-light':      '#e8eff6',
+        'ink-soft':       '#1f2937',
         // Semantic tokens (mapped to HSL vars)
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -56,8 +56,8 @@ export default {
         ring:   'hsl(var(--ring))',
       },
       fontFamily: {
-        display: ['Fraunces', 'Georgia', 'serif'],
-        sans:    ['DM Sans', 'system-ui', 'sans-serif'],
+        display: ['Sora', 'Manrope', 'system-ui', 'sans-serif'],
+        sans:    ['Manrope', 'system-ui', 'sans-serif'],
         mono:    ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       opacity: {
@@ -91,11 +91,11 @@ export default {
         sm:  'calc(var(--radius) - 4px)',
       },
       boxShadow: {
-        'card':       '0 1px 3px 0 rgba(92,92,153,0.08), 0 4px 16px 0 rgba(92,92,153,0.06)',
-        'card-hover': '0 4px 8px 0 rgba(92,92,153,0.14), 0 12px 32px 0 rgba(92,92,153,0.12)',
-        'nav':        '0 1px 0 0 rgba(204,204,255,0.3)',
-        'button':     '0 2px 8px 0 rgba(92,92,153,0.4)',
-        'glass':      '0 8px 32px 0 rgba(92,92,153,0.15), inset 0 1px 0 0 rgba(255,255,255,0.8)',
+        'card':       '0 1px 2px 0 rgba(15,23,42,0.08), 0 10px 24px -14px rgba(15,23,42,0.25)',
+        'card-hover': '0 2px 8px rgba(15,23,42,0.12), 0 18px 34px -16px rgba(15,23,42,0.35)',
+        'nav':        '0 1px 0 0 rgba(148,163,184,0.35)',
+        'button':     '0 8px 20px -10px rgba(14,116,144,0.55)',
+        'glass':      '0 14px 36px -20px rgba(15,23,42,0.35), inset 0 1px 0 0 rgba(255,255,255,0.75)',
       },
       keyframes: {
         'fade-up': {
