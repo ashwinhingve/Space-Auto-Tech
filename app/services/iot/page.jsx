@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import ImagePlaceholder from "@/app/component/ImagePlaceholder";
 
 const capabilities = [
   { title: "Embedded Firmware",        desc: "Custom firmware for microcontrollers (STM32, ESP32, Arduino) and single-board computers." },
@@ -56,8 +57,8 @@ export default function IoTPage() {
         <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
         <div className="absolute right-0 top-0 w-[600px] h-[600px] bg-gradient-to-bl from-sky/15 to-transparent rounded-full blur-3xl pointer-events-none" />
         <div className="container-xl relative py-20 md:py-28">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
-            <div className="max-w-2xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
               <div className="flex items-center gap-3 mb-5">
                 <div className="section-label">IoT Development</div>
                 <span className="tag-blue">Connected Systems</span>
@@ -65,13 +66,24 @@ export default function IoTPage() {
               <h1 className="section-heading-modern mb-6 text-balance">
                 Industrial Internet of Things Engineering
               </h1>
-              <p className="section-copy-muted text-base sm:text-lg max-w-xl">
+              <p className="section-copy-muted text-base sm:text-lg max-w-xl mb-8">
                 Connect every sensor, machine, and system in your facility to a unified data layer — enabling real-time visibility, analytics, and automated response.
               </p>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/components/contect" className="btn-primary">Start Your Project</Link>
+                <Link href="/services" className="btn-secondary">All Services</Link>
+              </div>
             </div>
-            <div className="flex flex-col gap-3">
-              <Link href="/components/contect" className="btn-primary whitespace-nowrap">Start Your Project</Link>
-              <Link href="/services"           className="btn-secondary whitespace-nowrap">All Services</Link>
+            <div className="relative h-72 sm:h-80 rounded-3xl overflow-hidden ring-1 ring-slate-300/40 shadow-[0_20px_50px_-24px_rgba(15,23,42,0.4)]">
+              <ImagePlaceholder
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
+                alt="IoT circuit board and connected sensors"
+                className="w-full h-full"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-ink/10 to-transparent" />
+              <div className="absolute bottom-4 left-4">
+                <span className="badge-sky">IoT Engineering</span>
+              </div>
             </div>
           </div>
         </div>
@@ -176,6 +188,69 @@ export default function IoTPage() {
                 <div className="h-px flex-grow bg-sky/20" />
                 <div className="flex-grow-[2] max-w-sm">
                   <p className="text-sm text-ink/55">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* LoRaWAN */}
+      <section className="section bg-cloud">
+        <div className="container-xl">
+          <div className="section-label mb-8">
+            <span className="section-number">05</span> LoRaWAN
+          </div>
+          <h2 className="section-heading-modern mb-6">LoRaWAN & LoRa Controls</h2>
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div>
+              <p className="section-copy-muted mb-4">
+                LoRaWAN enables long-range, low-power wireless communication for IoT deployments across large areas — farms, campuses, and remote infrastructure — where Wi-Fi and cellular are impractical or expensive.
+              </p>
+              <p className="section-copy-muted">
+                We design end-to-end LoRaWAN networks: custom LoRa end-node firmware, gateway selection, network server configuration (ChirpStack / TTN), and integration with your cloud platform or SCADA.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                { label: "Range",        value: "2–15 km" },
+                { label: "Battery Life", value: "5–10 years" },
+                { label: "Network",      value: "ChirpStack / TTN" },
+                { label: "Frequency",    value: "865–867 MHz (IN)" },
+              ].map((spec) => (
+                <div key={spec.label} className="card text-center">
+                  <p className="font-display text-2xl font-semibold text-cerulean mb-1">{spec.value}</p>
+                  <p className="text-xs text-ink/50">{spec.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Custom IoT */}
+      <section className="section bg-white">
+        <div className="container-xl">
+          <div className="section-label mb-8">
+            <span className="section-number">06</span> Custom Solutions
+          </div>
+          <h2 className="section-heading-modern mb-12">Bespoke IoT Hardware</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { title: "Custom PCB Design",        desc: "Purpose-built sensor boards and controller PCBs designed around your specific use case." },
+              { title: "Enclosure & IP Rating",    desc: "Industrial enclosure design for field deployment — IP65/IP67 rated for harsh environments." },
+              { title: "Firmware Development",     desc: "FreeRTOS and bare-metal firmware for STM32, ESP32, and custom microcontroller platforms." },
+              { title: "Field Network Design",     desc: "RS-485, CAN bus, and LoRa mesh network design for multi-node field installations." },
+              { title: "Cloud & API Integration",  desc: "Custom API connectors and device provisioning for AWS IoT, Azure, and self-hosted platforms." },
+              { title: "Prototyping to Production",desc: "From proof-of-concept to small-batch production runs — handled entirely in-house." },
+            ].map((item, i) => (
+              <div key={item.title} className="modern-panel card-hover-lift group card">
+                <div className="flex items-start gap-4">
+                  <span className="font-mono text-2xl font-light text-sky/35 flex-shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h3 className="font-semibold text-ink text-base mb-2 group-hover:text-cerulean transition-colors">{item.title}</h3>
+                    <p className="text-sm text-ink/55 leading-relaxed">{item.desc}</p>
+                  </div>
                 </div>
               </div>
             ))}

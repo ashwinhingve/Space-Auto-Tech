@@ -3,24 +3,107 @@ import Link from "next/link";
 import Image from "next/image";
 
 const footerLinks = {
-  Solutions: [
-    { label: "PLC Development",   href: "/services/plc" },
-    { label: "IoT Development",   href: "/services/iot" },
-    { label: "SCADA Systems",     href: "/services/scada" },
-    { label: "All Services",      href: "/services" },
+  Services: [
+    { label: "PLC Development",     href: "/services/plc" },
+    { label: "IoT Development",     href: "/services/iot" },
+    { label: "SCADA Systems",       href: "/services/scada" },
+    { label: "Consultancy",         href: "/services/consultancy" },
+    { label: "Power Sector",        href: "/services/power" },
+    { label: "Web Development",     href: "/services/web-development" },
+    { label: "All Services",        href: "/services" },
+  ],
+  Manufacturing: [
+    { label: "Panel Manufacturing", href: "/manufacturing/panel" },
+    { label: "PCB Design",          href: "/manufacturing/pcb" },
+    { label: "Solar Panels",        href: "/manufacturing/solar-panels" },
+    { label: "Battery Packs",       href: "/manufacturing/batteries" },
+    { label: "All Manufacturing",   href: "/manufacturing" },
   ],
   Company: [
-    { label: "About Us",          href: "/components/profile" },
-    { label: "Contact",           href: "/components/contect" },
-    { label: "WebScada Portal",   href: "http://webscada.spaceautotech.com/", external: true },
-    { label: "Inventory",         href: "http://inventory.spaceautotech.com/", external: true },
+    { label: "About Us",            href: "/components/profile" },
+    { label: "Our Products",        href: "/our-products" },
+    { label: "Contact",             href: "/components/contect" },
+    { label: "Vendor Registration", href: "/vendor-registration" },
+    { label: "WebScada Portal",     href: "http://webscada.spaceautotech.com/", external: true },
+    { label: "Inventory",           href: "http://inventory.spaceautotech.com/", external: true },
   ],
   Legal: [
-    { label: "Privacy Policy",    href: "#" },
-    { label: "Terms of Service",  href: "#" },
-    { label: "Cookie Policy",     href: "#" },
+    { label: "Privacy Policy",      href: "/privacy-policy" },
+    { label: "Terms of Service",    href: "/terms" },
+    { label: "Cookie Policy",       href: "#" },
   ],
 };
+
+const developerPartners = [
+  {
+    label: "IoT Portal",
+    href: "https://iot.spaceautotech.com/",
+    desc: "Live IoT monitoring & device management platform",
+    favicon: "/assets/icon.png",
+  },
+  {
+    label: "Deployment Corner",
+    href: "https://www.demploymentcorner.com/",
+    desc: "DevOps, cloud deployment & infrastructure solutions",
+    favicon: "/assets/favicons/demploymentcorner.png",
+  },
+  {
+    label: "Taptifs",
+    href: "https://www.taptifs.com/",
+    desc: "Creative digital design & web development studio",
+    favicon: "/assets/favicons/taptifs.png",
+  },
+];
+
+function ExternalIcon() {
+  return (
+    <svg className="w-2.5 h-2.5 opacity-40 group-hover/partner:opacity-70 transition-opacity flex-shrink-0" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <path d="M3 9L9 3M9 3H5M9 3v4"/>
+    </svg>
+  );
+}
+
+function DevelopedBySection() {
+  return (
+    <div className="py-5 border-t border-white/8">
+      <p className="text-center text-[10px] font-mono font-semibold tracking-[0.2em] uppercase text-sky/35 mb-4">
+        Developed &amp; Maintained by
+      </p>
+      <div className="flex flex-col sm:flex-row items-stretch justify-center gap-3">
+        {developerPartners.map((partner) => (
+          <a
+            key={partner.label}
+            href={partner.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/partner flex items-start gap-3 px-4 py-3 rounded-xl bg-white/4 border border-white/8 hover:bg-white/7 hover:border-sky/20 transition-all duration-200 sm:flex-1 sm:max-w-[220px]"
+          >
+            <span className="flex-shrink-0 w-9 h-9 rounded-lg bg-sky/10 border border-sky/15 overflow-hidden group-hover/partner:border-cerulean/25 transition-all duration-200">
+              <Image
+                src={partner.favicon}
+                alt={partner.label}
+                width={36}
+                height={36}
+                className="w-full h-full object-cover"
+              />
+            </span>
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-1.5 mb-0.5">
+                <p className="text-sm font-semibold text-white/70 group-hover/partner:text-white transition-colors duration-200 truncate">
+                  {partner.label}
+                </p>
+                <ExternalIcon />
+              </div>
+              <p className="text-[11px] text-white/35 group-hover/partner:text-white/50 transition-colors duration-200 leading-snug">
+                {partner.desc}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Footer() {
   return (
@@ -29,13 +112,18 @@ export default function Footer() {
       <div className="h-px bg-gradient-to-r from-transparent via-sky/40 to-transparent" />
 
       <div className="container-xl py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
 
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-3 mb-5 group">
               <div className="relative w-9 h-9 rounded-lg overflow-hidden ring-1 ring-sky/25 group-hover:ring-sky/50 transition-all">
-                <Image src="/assets/icon.png" alt="Space Auto Tech" fill className="object-cover" />
+                <Image
+                  src="/assets/icon.png"
+                  alt="Space Auto Tech"
+                  fill
+                  className="object-cover"
+                />
               </div>
               <div className="flex flex-col leading-none">
                 <span className="font-display text-base font-semibold text-white">Space Auto Tech</span>
@@ -56,14 +144,14 @@ export default function Footer() {
                 </svg>
                 spaceautomation29@gmail.com
               </a>
-              <a href="tel:+918120684036" className="flex items-center gap-2.5 text-sm text-white/50 hover:text-sky transition-colors group/link">
+              <a href="tel:+919938457420" className="flex items-center gap-2.5 text-sm text-white/50 hover:text-sky transition-colors group/link">
                 <svg className="w-4 h-4 text-sky/50 group-hover/link:text-sky transition-colors flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
                 </svg>
                 +91 9938457420
               </a>
-              <p className="flex items-center gap-2.5 text-sm text-white/50">
-                <svg className="w-4 h-4 text-sky/50 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <p className="flex items-start gap-2.5 text-sm text-white/50">
+                <svg className="w-4 h-4 text-sky/50 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <path d="M12 21s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 7.2c0 7.3-8 11.8-8 11.8z"/>
                   <circle cx="12" cy="10" r="3"/>
                 </svg>
@@ -122,69 +210,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-white/8 space-y-4">
+        <div className="mt-12 space-y-0">
 
           {/* Developer Credits */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <span className="text-[10px] font-mono font-semibold tracking-[0.18em] uppercase text-sky/40">
-              Developed by
-            </span>
-            <div className="flex items-center gap-2">
-              {[
-                {
-                  label: "IoT Portal",
-                  href: "https://iot.spaceautotech.com/",
-                  favicon: "https://www.google.com/s2/favicons?domain=iot.spaceautotech.com&sz=32",
-                },
-                {
-                  label: "Deployment Corner",
-                  href: "https://www.demploymentcorner.com/",
-                  favicon: "https://www.google.com/s2/favicons?domain=demploymentcorner.com&sz=32",
-                },
-                {
-                  label: "Taptifs",
-                  href: "https://www.taptifs.com/",
-                  favicon: "https://www.google.com/s2/favicons?domain=taptifs.com&sz=32",
-                },
-              ].map((site, i) => (
-                <span key={site.label} className="flex items-center gap-2">
-                  {i > 0 && (
-                    <span className="text-white/15 text-xs select-none">·</span>
-                  )}
-                  <a
-                    href={site.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[11px] font-mono text-white/45 hover:text-sky transition-colors duration-200 group/credit"
-                  >
-                    {/* Favicon */}
-                    <span className="w-4 h-4 rounded-sm overflow-hidden flex-shrink-0 opacity-60 group-hover/credit:opacity-100 transition-opacity">
-                      <Image
-                        src={site.favicon}
-                        alt={site.label}
-                        width={16}
-                        height={16}
-                        className="w-full h-full object-contain"
-                      />
-                    </span>
-                    {site.label}
-                    <svg
-                      className="w-2.5 h-2.5 opacity-40 group-hover/credit:opacity-80 transition-opacity"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                    >
-                      <path d="M3 9L9 3M9 3H5M9 3v4" />
-                    </svg>
-                  </a>
-                </span>
-              ))}
-            </div>
-          </div>
+          <DevelopedBySection />
 
           {/* Copyright + Status */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="pt-5 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs text-white/30 font-mono">
               &copy; {new Date().getFullYear()} Space Auto Tech — Team Space Auto Tech. All rights reserved.
             </p>

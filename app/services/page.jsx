@@ -126,11 +126,103 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Engineering Services */}
+<section className="section bg-white">
+  <div className="container-xl">
+    <div className="section-label mb-8">
+      <span className="section-number">02</span> Engineering Services
+    </div>
+    <div className="grid sm:grid-cols-3 gap-5">
+      {[
+        {
+          title: "Consultancy",
+          desc: "Vendor-neutral engineering advisory across IoT, SCADA, web, and irrigation projects. Feasibility studies, TPI, and implementation support.",
+          href: "/services/consultancy",
+          tags: ["IoT Consultancy", "SCADA Advisory", "TPI", "Irrigation"],
+        },
+        {
+          title: "Power Sector Solutions",
+          desc: "Substation design, HT & LT line laying, and solar PV installation for industrial and utility customers. CEA regulation compliant.",
+          href: "/services/power",
+          tags: ["Substation", "HT/LT Lines", "Solar Install", "CEA Compliant"],
+        },
+        {
+          title: "Web Development",
+          desc: "Industrial web platforms, SCADA dashboards, ERP systems, and e-commerce solutions built on modern open-source stacks.",
+          href: "/services/web-development",
+          tags: ["React/Next.js", "Node.js", "Dashboards", "ERP"],
+        },
+      ].map((svc) => (
+        <Link
+          key={svc.href}
+          href={svc.href}
+          className="group modern-panel card-hover-lift card flex flex-col gap-4 hover:border-cerulean/40 hover:shadow-card-hover transition-all duration-300"
+        >
+          <div>
+            <h3 className="font-display text-lg font-semibold text-ink group-hover:text-cerulean transition-colors mb-2">{svc.title}</h3>
+            <p className="text-sm text-ink/55 leading-relaxed">{svc.desc}</p>
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {svc.tags.map((t) => <span key={t} className="tag-light">{t}</span>)}
+          </div>
+          <span className="flex items-center gap-1 text-xs text-cerulean/60 group-hover:text-cerulean transition-colors mt-auto">
+            Learn more
+            <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M2 6h8M6 2l4 4-4 4" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </span>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
+
+      {/* Manufacturing */}
+<section className="section bg-cloud">
+  <div className="container-xl">
+    <div className="section-label mb-8">
+      <span className="section-number">03</span> Manufacturing
+    </div>
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {[
+        { title: "Panel Manufacturing", href: "/manufacturing/panel",         desc: "PLC, Battery, RTU, and switchgear panels built in-house to IEC standards." },
+        { title: "PCB Design & Assembly", href: "/manufacturing/pcb",         desc: "Schematic to assembled board — prototyping, SMT assembly, and QA testing." },
+        { title: "Solar Panel Supply", href: "/manufacturing/solar-panels",   desc: "Monocrystalline, polycrystalline, and thin-film panels with full BOS supply." },
+        { title: "Battery Packs", href: "/manufacturing/batteries",           desc: "Custom Li-ion and LiPo battery packs with integrated BMS for industrial use." },
+      ].map((svc, idx) => (
+        <Link
+          key={svc.href}
+          href={svc.href}
+          className="group modern-panel card-hover-lift bg-white rounded-2xl border border-slate-200/85 p-5 flex flex-col gap-3 h-full shadow-card hover:shadow-card-hover hover:border-cerulean/35"
+        >
+          <span className="text-[10px] font-mono tracking-widest uppercase text-steel/65">0{idx + 1}</span>
+          <h3 className="font-semibold text-ink text-sm group-hover:text-cerulean transition-colors">{svc.title}</h3>
+          <p className="text-xs text-ink/50 leading-relaxed flex-grow">{svc.desc}</p>
+          <span className="flex items-center gap-1 text-xs text-cerulean/60 group-hover:text-cerulean transition-colors">
+            Learn more
+            <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M2 6h8M6 2l4 4-4 4" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </span>
+        </Link>
+      ))}
+    </div>
+    <div className="mt-6 text-center">
+      <Link href="/manufacturing" className="btn-secondary">
+        View All Manufacturing
+        <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </Link>
+    </div>
+  </div>
+</section>
+
       {/* More services */}
       <section className="section bg-white">
         <div className="container-xl">
           <div className="section-label mb-8">
-            <span className="section-number">02</span> Additional Solutions
+            <span className="section-number">04</span> Additional Solutions
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {moreServices.map((svc, idx) => (

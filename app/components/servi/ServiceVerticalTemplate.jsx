@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import ImagePlaceholder from "@/app/component/ImagePlaceholder";
 import Link from "next/link";
 
 export default function ServiceVerticalTemplate({
@@ -44,7 +44,7 @@ export default function ServiceVerticalTemplate({
 
             <div className="relative">
               <div className="relative h-72 sm:h-80 rounded-3xl overflow-hidden ring-1 ring-slate-300/45 shadow-[0_20px_50px_-24px_rgba(15,23,42,0.45)]">
-                <Image src={heroImage} alt={heroAlt} fill className="object-cover" />
+                <ImagePlaceholder src={heroImage || null} variant="primary" className="w-full h-full" alt={heroAlt || "Service image"} />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" />
               </div>
               <div className="mt-4 card">
@@ -77,7 +77,7 @@ export default function ServiceVerticalTemplate({
                 className="modern-panel card-hover-lift bg-white border border-slate-200/85 rounded-2xl shadow-card overflow-hidden"
               >
                 <div className="relative h-44">
-                  <Image src={card.imageSrc} alt={card.title} fill className="object-cover" />
+                  <ImagePlaceholder src={card.imageSrc || null} variant="primary" className="w-full h-full" alt={card.title || "Service image"} />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-ink/5 to-transparent" />
                   <span className="absolute top-3 left-3 px-2 py-1 rounded-md bg-white/80 border border-slate-200/80 text-[10px] font-mono tracking-widest text-steel/80">
                     {String(index + 1).padStart(2, "0")}
@@ -114,7 +114,7 @@ export default function ServiceVerticalTemplate({
             <div className="grid md:grid-cols-3 gap-5">
               {projectShowcase.map((item) => (
                 <article key={item.title} className="modern-panel card-hover-lift relative h-72 rounded-2xl overflow-hidden ring-1 ring-slate-300/40 shadow-card group">
-                  <Image src={item.image} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <ImagePlaceholder src={item.image || null} variant="primary" className="w-full h-full" alt={item.title || "Service image"} />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <p className="text-[10px] font-mono tracking-[0.14em] uppercase text-sky/75 mb-1">{item.tag}</p>

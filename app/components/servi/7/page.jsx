@@ -8,21 +8,21 @@ const cards = [
     description:
       "Control lighting, climate, security, and appliances through connected systems, schedules, and remote access.",
     listItems: ["Improved daily convenience"],
-    imageSrc: "/images/home4.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=640&q=80",
   },
   {
     title: "How Smart Homes Work",
     description:
       "Devices communicate through secure hubs and apps to automate routines and support real-time control.",
     listItems: ["Energy efficiency", "Time savings"],
-    imageSrc: "/images/home11.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=640&q=80",
   },
   {
     title: "Security and Reliability",
     description:
       "Proper authentication, updates, and secure integration practices help keep systems safe and dependable.",
     listItems: ["Enhanced security", "Reliable connectivity"],
-    imageSrc: "/images/home1.jpg",
+    imageSrc: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=640&q=80",
   },
 ];
 
@@ -33,7 +33,7 @@ export default function SmartHomePage() {
       title="Intelligent Home Automation for Comfort, Security, and Control"
       description="Future-ready home systems that simplify daily life while improving safety and energy efficiency."
       highlight="Step into the future with advanced automation designed for seamless, secure living environments."
-      heroImage="/svg/home1.gif"
+      heroImage="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80"
       heroAlt="Smart home automation"
       aboutTitle="About Space Automation Home Solutions"
       bullets={["IoT integration", "Automation scheduling", "Remote access and control"]}

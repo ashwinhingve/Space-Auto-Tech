@@ -1,5 +1,5 @@
 "use client";
-import Image from 'next/image';
+import ImagePlaceholder from "@/app/component/ImagePlaceholder";
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
@@ -24,7 +24,7 @@ const primaryServices = [
     tagline: "Industrial-grade automation",
     description: "Custom PLC programs for Siemens, Allen-Bradley, Mitsubishi and more. From single-station control to full plant-wide automation.",
     href: "/services/plc",
-    image: "/images/service1.jpg",
+    image: "https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=640&q=80",
     imageAlt: "PLC engineering team building automation controls",
     features: ["Ladder Logic & Structured Text", "Multi-platform Support", "Safety System Integration"],
     icon: (
@@ -42,7 +42,7 @@ const primaryServices = [
     tagline: "Connected ecosystems",
     description: "End-to-end IoT solutions — sensor selection, firmware development, edge computing, and cloud dashboards for real-time visibility.",
     href: "/services/iot",
-    image: "/images/iot.jpg",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=640&q=80",
     imageAlt: "IoT devices connected with cloud dashboards",
     features: ["Embedded Firmware", "Edge & Cloud Processing", "Sensor & Gateway Integration"],
     icon: (
@@ -59,7 +59,7 @@ const primaryServices = [
     tagline: "Real-time visibility",
     description: "Robust SCADA platforms that give operators full visibility and control — built for uptime, security, and scalability.",
     href: "/services/scada",
-    image: "/images/service4.jpg",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=640&q=80",
     imageAlt: "SCADA control room with monitoring displays",
     features: ["Custom HMI Design", "Historian & Reporting", "Remote Access & Alarms"],
     icon: (
@@ -88,23 +88,23 @@ const techStack = [
 ];
 
 const carouselSlides = [
-  { src: '/images/image1.jpg',  alt: 'Industrial automation' },
-  { src: '/assets/solar.png',   alt: 'Solar power systems' },
-  { src: '/images/image3.jpg',  alt: 'Control systems' },
-  { src: '/images/image4.jpg',  alt: 'Smart infrastructure' },
+  { src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80', alt: 'Industrial automation control systems' },
+  { src: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80', alt: 'Solar power systems' },
+  { src: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=900&q=80', alt: 'Industrial robot arm automation' },
+  { src: 'https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&w=900&q=80', alt: 'Smart manufacturing infrastructure' },
 ];
 
 const heroVisualCards = [
   {
     title: "Live Process Monitoring",
     subtitle: "SCADA + Analytics",
-    src: "/images/service6.jpg",
+    src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
     alt: "Operator monitoring industrial process analytics",
   },
   {
     title: "Connected Energy Assets",
     subtitle: "Solar + IoT Control",
-    src: "/images/solar3.webp",
+    src: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=600&q=80",
     alt: "Solar assets connected with automation network",
   },
 ];
@@ -114,28 +114,28 @@ const impactShowcase = [
     title: "Smart Manufacturing Cells",
     metric: "27% Faster Throughput",
     tag: "Manufacturing",
-    src: "/images/image6.png",
+    src: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80",
     alt: "Smart manufacturing cell automation",
   },
   {
     title: "Agriculture Control Systems",
     metric: "35% Water Savings",
     tag: "AgriTech",
-    src: "/images/service2.jpg",
+    src: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=600&q=80",
     alt: "Automated irrigation control deployment",
   },
   {
     title: "Solar Farm Monitoring",
     metric: "99.5% Uptime Tracking",
     tag: "Energy",
-    src: "/images/solar2.webp",
+    src: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=600&q=80",
     alt: "Solar farm dashboards and telemetry",
   },
   {
     title: "Railway Systems Reliability",
     metric: "24/7 Remote Diagnostics",
     tag: "Transport",
-    src: "/images/rail1.jpeg",
+    src: "https://images.unsplash.com/photo-1494548162494-384bba4ab999?auto=format&fit=crop&w=600&q=80",
     alt: "Railway automation and monitoring systems",
   },
 ];
@@ -257,44 +257,27 @@ export default function HomePage() {
   }, []);
 
   useGSAP(() => {
-    // Hero entrance — these are inside heroRef so scope is fine
+    // ── Hero entrance ────────────────────────────────────────────────────────
     const tl = gsap.timeline({ delay: 0.1 });
     tl.from("#hero-label",    { y: 20, opacity: 0, duration: 0.6, ease: "power3.out" })
-      .from("#hero-headline", { y: 36, opacity: 0, duration: 0.9, ease: "power3.out" }, "-=0.3")
-      .from("#hero-sub",      { y: 20, opacity: 0, duration: 0.7, ease: "power3.out" }, "-=0.5")
-      .from("#hero-ctas",     { y: 16, opacity: 0, duration: 0.6, ease: "power3.out" }, "-=0.4")
-      .from("#hero-stats .stat-card", { y: 20, opacity: 0, stagger: 0.12, duration: 0.6, ease: "power3.out" }, "-=0.3")
+      .from("#hero-headline", { y: 44, opacity: 0, duration: 1.0, ease: "power3.out" }, "-=0.3")
+      .from("#hero-sub",      { y: 22, opacity: 0, duration: 0.75, ease: "power3.out" }, "-=0.55")
+      .from("#hero-ctas",     { y: 18, opacity: 0, duration: 0.65, ease: "power3.out" }, "-=0.45")
+      .from("#hero-stats .stat-card", { y: 22, opacity: 0, stagger: 0.12, duration: 0.65, ease: "power3.out" }, "-=0.35")
+      .from(".hero-vis-card", { y: 24, opacity: 0, stagger: 0.1, duration: 0.55, ease: "power2.out" }, "-=0.3")
       .from("#tech-marquee",  { opacity: 0, duration: 0.6, ease: "power2.out" }, "-=0.2");
 
-    // Use fromTo so items always end up VISIBLE (opacity 1) even if trigger misfires
-    gsap.fromTo(".service-card-item",
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.15, duration: 0.7, ease: "power2.out",
-        scrollTrigger: { trigger: "#services-section", start: "top 80%" },
-        clearProps: "transform,opacity",
-      }
-    );
-    gsap.fromTo(".tech-row",
-      { x: -24, opacity: 0 },
-      { x: 0, opacity: 1, stagger: 0.1, duration: 0.6, ease: "power2.out",
-        scrollTrigger: { trigger: "#tech-section", start: "top 80%" },
-        clearProps: "transform,opacity",
-      }
-    );
-    gsap.fromTo(".why-card",
-      { y: 28, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.1, duration: 0.6, ease: "power2.out",
-        scrollTrigger: { trigger: "#why-section", start: "top 82%" },
-        clearProps: "transform,opacity",
-      }
-    );
-    gsap.fromTo(".add-svc-card",
-      { scale: 0.92, opacity: 0 },
-      { scale: 1, opacity: 1, stagger: 0.07, duration: 0.5, ease: "back.out(1.2)",
-        scrollTrigger: { trigger: "#more-services", start: "top 82%" },
-        clearProps: "transform,opacity",
-      }
-    );
+    // ── Hero blob parallax ───────────────────────────────────────────────────
+    gsap.to(".hero-blob-r", {
+      y: -120, x: 20, ease: "none",
+      scrollTrigger: { trigger: "#hero-section", start: "top top", end: "+=800", scrub: 1.5 },
+    });
+    gsap.to(".hero-blob-l", {
+      y: -70, ease: "none",
+      scrollTrigger: { trigger: "#hero-section", start: "top top", end: "+=800", scrub: 1.5 },
+    });
+
+    // ── Section intros ───────────────────────────────────────────────────────
     ["#services-section", "#impact-section", "#why-section", "#more-services"].forEach((sectionId) => {
       gsap.fromTo(`${sectionId} .section-intro`,
         { y: 20, opacity: 0 },
@@ -304,20 +287,101 @@ export default function HomePage() {
         }
       );
     });
+
+    // ── Service cards ────────────────────────────────────────────────────────
+    gsap.fromTo(".service-card-item",
+      { y: 44, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.15, duration: 0.75, ease: "power2.out",
+        scrollTrigger: { trigger: "#services-section", start: "top 80%" },
+        clearProps: "transform,opacity",
+      }
+    );
+
+    // ── Impact gallery ───────────────────────────────────────────────────────
     gsap.fromTo(".impact-card",
-      { y: 34, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.11, duration: 0.6, ease: "power2.out",
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.11, duration: 0.65, ease: "power2.out",
         scrollTrigger: { trigger: "#impact-section", start: "top 82%" },
         clearProps: "transform,opacity",
       }
     );
-    gsap.fromTo(".about-visual",
-      { y: 20, scale: 0.98, opacity: 0 },
-      { y: 0, scale: 1, opacity: 1, stagger: 0.08, duration: 0.55, ease: "power2.out",
+    // Subtle parallax on images inside impact cards
+    gsap.to(".impact-img", {
+      yPercent: -10, ease: "none",
+      scrollTrigger: { trigger: "#impact-section", start: "top bottom", end: "bottom top", scrub: true },
+    });
+
+    // ── Why Us / About ───────────────────────────────────────────────────────
+    gsap.fromTo(".why-card",
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.1, duration: 0.65, ease: "power2.out",
         scrollTrigger: { trigger: "#why-section", start: "top 82%" },
         clearProps: "transform,opacity",
       }
     );
+    gsap.fromTo(".about-visual",
+      { y: 22, scale: 0.97, opacity: 0 },
+      { y: 0, scale: 1, opacity: 1, stagger: 0.08, duration: 0.6, ease: "power2.out",
+        scrollTrigger: { trigger: "#why-section", start: "top 82%" },
+        clearProps: "transform,opacity",
+      }
+    );
+
+    // ── More services grid ───────────────────────────────────────────────────
+    gsap.fromTo(".add-svc-card",
+      { scale: 0.90, opacity: 0 },
+      { scale: 1, opacity: 1, stagger: 0.07, duration: 0.5, ease: "back.out(1.4)",
+        scrollTrigger: { trigger: "#more-services", start: "top 82%" },
+        clearProps: "transform,opacity",
+      }
+    );
+
+    // ── Tech stack ───────────────────────────────────────────────────────────
+    gsap.fromTo(".tech-row",
+      { x: -28, opacity: 0 },
+      { x: 0, opacity: 1, stagger: 0.1, duration: 0.65, ease: "power2.out",
+        scrollTrigger: { trigger: "#tech-section", start: "top 80%" },
+        clearProps: "transform,opacity",
+      }
+    );
+
+    // ── Company Profile overview ─────────────────────────────────────────────
+    gsap.fromTo(".profile-stat",
+      { y: 28, opacity: 0 },
+      { y: 0, opacity: 1, stagger: 0.09, duration: 0.65, ease: "power2.out",
+        scrollTrigger: { trigger: ".profile-section", start: "top 82%" },
+        clearProps: "transform,opacity",
+      }
+    );
+    gsap.fromTo(".profile-text",
+      { x: 32, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.75, ease: "power2.out",
+        scrollTrigger: { trigger: ".profile-section", start: "top 82%" },
+        clearProps: "transform,opacity",
+      }
+    );
+
+    // ── CTA banner ───────────────────────────────────────────────────────────
+    gsap.timeline({ scrollTrigger: { trigger: ".cta-section", start: "top 82%" } })
+      .fromTo(".cta-badge",
+        { y: 12, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, ease: "power2.out", clearProps: "transform,opacity" }
+      )
+      .fromTo(".cta-heading",
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.85, ease: "power3.out", clearProps: "transform,opacity" },
+        "-=0.05"
+      )
+      .fromTo(".cta-body",
+        { y: 22, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.65, ease: "power2.out", clearProps: "transform,opacity" },
+        "-=0.45"
+      )
+      .fromTo(".cta-btns",
+        { y: 18, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.55, ease: "power2.out", clearProps: "transform,opacity" },
+        "-=0.35"
+      );
   }, { scope: heroRef });
 
   return (
@@ -326,11 +390,11 @@ export default function HomePage() {
       {/* ══════════════════════════════════════════════════
           HERO SECTION
       ══════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-cloud">
+      <section id="hero-section" className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-cloud">
         {/* Background geometry */}
         <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none" />
-        <div className="absolute -right-32 -top-20 w-[780px] h-[780px] rounded-full bg-gradient-to-bl from-sky/25 via-cerulean/10 to-transparent blur-3xl pointer-events-none" />
-        <div className="absolute -left-24 bottom-0 w-[480px] h-[480px] rounded-full bg-gradient-to-tr from-steel/12 to-transparent blur-3xl pointer-events-none" />
+        <div className="hero-blob-r absolute -right-32 -top-20 w-[780px] h-[780px] rounded-full bg-gradient-to-bl from-sky/25 via-cerulean/10 to-transparent blur-3xl pointer-events-none" />
+        <div className="hero-blob-l absolute -left-24 bottom-0 w-[480px] h-[480px] rounded-full bg-gradient-to-tr from-steel/12 to-transparent blur-3xl pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_60%_40%,rgba(14,116,144,0.08),transparent)] pointer-events-none" />
 
         <div className="container-xl relative z-10 py-24 grid lg:grid-cols-2 gap-16 items-center">
@@ -378,7 +442,9 @@ export default function HomePage() {
                   key={i}
                   className={`absolute inset-0 transition-opacity duration-1000 ${activeSlide === i ? "opacity-100" : "opacity-0"}`}
                 >
-                  <Image src={slide.src} alt={slide.alt} fill className="object-cover" priority={i === 0} />
+                  <div className={`w-full h-full ${activeSlide === i ? "animate-kenburns" : ""}`}>
+                    <ImagePlaceholder src={slide.src} variant="primary" className="w-full h-full" alt={slide.alt} />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
                 </div>
               ))}
@@ -414,8 +480,8 @@ export default function HomePage() {
 
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {heroVisualCards.map((card) => (
-                <div key={card.title} className="relative h-36 sm:h-40 rounded-2xl overflow-hidden ring-1 ring-sky/20 shadow-card">
-                  <Image src={card.src} alt={card.alt} fill className="object-cover" />
+                <div key={card.title} className="hero-vis-card relative h-36 sm:h-40 rounded-2xl overflow-hidden ring-1 ring-sky/20 shadow-card">
+                  <ImagePlaceholder src={card.src} variant="primary" className="w-full h-full" alt={card.alt} />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/30 to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3">
                     <p className="text-[10px] font-mono tracking-[0.16em] uppercase text-sky/80 mb-1">{card.subtitle}</p>
@@ -502,12 +568,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="relative h-44 overflow-hidden">
-                  <Image
-                    src={svc.image}
-                    alt={svc.imageAlt}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.08]"
-                  />
+                  <ImagePlaceholder src={svc.image} variant="primary" className="w-full h-full" alt={svc.imageAlt} />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-ink/10 to-transparent" />
                 </div>
 
@@ -574,7 +635,9 @@ export default function HomePage() {
           <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-5 lg:gap-6">
             {impactShowcase.map((item) => (
               <article key={item.title} className="impact-card modern-panel card-hover-lift relative h-72 sm:h-80 rounded-3xl overflow-hidden ring-1 ring-slate-300/35 shadow-card group hover:shadow-card-hover">
-                <Image src={item.src} alt={item.alt} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="impact-img absolute inset-[-12%] w-[124%] h-[124%]">
+                  <ImagePlaceholder src={item.src} variant="primary" className="w-full h-full" alt={item.alt} />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/45 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-tr from-cerulean/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute top-4 left-4 transition-transform duration-300 group-hover:translate-y-0.5">
@@ -636,7 +699,7 @@ export default function HomePage() {
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="about-visual relative col-span-2 h-52 rounded-3xl overflow-hidden ring-1 ring-sky/20 shadow-card">
-                  <Image src="/images/about-us.jpg" alt="Automation team collaborating on industrial solutions" fill className="object-cover" />
+                  <ImagePlaceholder src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?auto=format&fit=crop&w=900&q=80" variant="primary" className="w-full h-full" alt="Automation team collaborating on industrial solutions" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/65 via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <p className="text-[10px] font-mono tracking-[0.16em] uppercase text-sky/80 mb-1">Engineering Culture</p>
@@ -644,12 +707,12 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="about-visual relative h-36 rounded-2xl overflow-hidden ring-1 ring-sky/20 shadow-card">
-                  <Image src="/images/vision1.jpg" alt="Long-term vision for intelligent industrial ecosystems" fill className="object-cover" />
+                  <ImagePlaceholder src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" variant="primary" className="w-full h-full" alt="Long-term vision for intelligent industrial ecosystems" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
                   <p className="absolute bottom-3 left-3 text-xs font-semibold text-white">Vision-led design</p>
                 </div>
                 <div className="about-visual relative h-36 rounded-2xl overflow-hidden ring-1 ring-sky/20 shadow-card">
-                  <Image src="/images/mission.jpg" alt="Mission driven deployment planning and execution" fill className="object-cover" />
+                  <ImagePlaceholder src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80" variant="primary" className="w-full h-full" alt="Mission driven deployment planning and execution" />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
                   <p className="absolute bottom-3 left-3 text-xs font-semibold text-white">Execution focused</p>
                 </div>
@@ -773,10 +836,52 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Company Profile Overview */}
+      <section className="profile-section section bg-white">
+        <div className="container-xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="section-label mb-5">Company Profile</div>
+              <h2 className="section-heading-modern mb-6">Engineering Since 2024</h2>
+              <div className="grid grid-cols-2 gap-4 mb-8">
+                {[
+                  { value: "Sep 2024", label: "Founded" },
+                  { value: "Bhopal", label: "Headquarters" },
+                  { value: "150+", label: "Projects Delivered" },
+                  { value: "7", label: "Service Verticals" },
+                ].map((stat) => (
+                  <div key={stat.label} className="profile-stat card text-center">
+                    <p className="font-display text-2xl font-semibold text-cerulean mb-1">{stat.value}</p>
+                    <p className="text-xs text-ink/50 font-mono uppercase tracking-widest">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+              <Link href="/components/profile" className="btn-primary">
+                Read Full Profile
+                <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </Link>
+            </div>
+            <div className="profile-text">
+              <p className="text-lg text-ink/60 leading-relaxed mb-4">
+                Space Auto Tech was founded in Bhopal, Madhya Pradesh with a mission to bring Industry 4.0 automation capabilities to businesses of all sizes across India.
+              </p>
+              <p className="text-ink/55 leading-relaxed mb-4">
+                Starting with PLC programming and SCADA deployments, we have rapidly expanded into IoT development, solar installations, panel manufacturing, PCB design, and proprietary web platforms.
+              </p>
+              <p className="text-ink/55 leading-relaxed">
+                Our team combines decades of field engineering experience with modern software development — delivering automation solutions that are reliable, maintainable, and built for the long term.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ══════════════════════════════════════════════════
           CTA BANNER
       ══════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-cerulean">
+      <section className="cta-section relative overflow-hidden bg-cerulean">
         {/* layered BG */}
         <div className="absolute inset-0 bg-dot-pattern opacity-10 pointer-events-none" />
         <div className="absolute right-0 top-0 w-[500px] h-[500px] bg-gradient-to-bl from-sky/25 to-transparent rounded-full blur-3xl pointer-events-none" />
@@ -786,15 +891,15 @@ export default function HomePage() {
 
         <div className="container-xl relative py-24 md:py-28 flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="text-white max-w-xl">
-            <span className="badge bg-white/15 text-white/80 border-white/20 mb-5 block w-fit">Ready to automate?</span>
-            <h2 className="font-display text-4xl md:text-5xl font-semibold mb-4 text-balance leading-[1.1]">
+            <span className="cta-badge badge bg-white/15 text-white/80 border-white/20 mb-5 block w-fit">Ready to automate?</span>
+            <h2 className="cta-heading font-display text-4xl md:text-5xl font-semibold mb-4 text-balance leading-[1.1]">
               Let&apos;s engineer your next industrial breakthrough.
             </h2>
-            <p className="text-white/70 text-lg leading-relaxed">
+            <p className="cta-body text-white/70 text-lg leading-relaxed">
               Our engineers analyse your process and design systems that deliver real, measurable results.
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+          <div className="cta-btns flex flex-col sm:flex-row gap-3 flex-shrink-0">
             <Link href="/components/contect" className="btn-white">
               Start a Project
               <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">

@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import ImagePlaceholder from "@/app/component/ImagePlaceholder";
 import Link from "next/link";
 
 const productGroups = [
@@ -69,7 +69,7 @@ export default function ProductPage() {
                   className="modern-panel card-hover-lift group bg-white rounded-2xl border border-slate-200/80 shadow-card overflow-hidden hover:shadow-card-hover"
                 >
                   <div className="relative h-52">
-                    <Image src={product.image} alt={product.name} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <ImagePlaceholder src={product.image} variant="neutral" className="w-full h-full" alt={product.name} />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" />
                   </div>
                   <div className="p-4">

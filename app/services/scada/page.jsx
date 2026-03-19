@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import ImagePlaceholder from "@/app/component/ImagePlaceholder";
 
 const features = [
   { title: "Custom HMI Design",         desc: "Intuitive operator interfaces designed for clarity under pressure. P&IDs, mimic diagrams, and process schematics." },
@@ -12,13 +13,6 @@ const features = [
   { title: "Integration & APIs",        desc: "REST APIs, OPC-UA servers, and database connectors for ERP, MES, and business intelligence integration." },
 ];
 
-const platforms = [
-  { name: "Siemens WinCC",    type: "SCADA/HMI",     desc: "Deployed on Windows-based SCADA servers with SIMATIC connectivity." },
-  { name: "Inductive Automation Ignition", type: "Web SCADA", desc: "HTML5-based cross-platform SCADA with unlimited client licencing." },
-  { name: "GE iFix / CIMPLICITY", type: "Process SCADA", desc: "For complex continuous process and manufacturing environments." },
-  { name: "Custom Web SCADA", type: "Bespoke",        desc: "Our own web-based SCADA built on React + Node-RED + InfluxDB + Grafana." },
-  { name: "OPC-UA Server",    type: "Protocol",       desc: "Vendor-agnostic connectivity for any SCADA or historian platform." },
-];
 
 const sectors = [
   { title: "Water & Wastewater",  items: ["Pump station monitoring", "WWTP process control", "Reservoir level management"] },
@@ -40,6 +34,14 @@ export default function SCADAPage() {
 
       {/* Hero */}
       <section className="relative bg-ink overflow-hidden border-b border-sky/15">
+        {/* Background image with dark overlay */}
+        <div className="absolute inset-0">
+          <ImagePlaceholder
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=60"
+            alt="SCADA control room monitoring"
+            className="w-full h-full opacity-20"
+          />
+        </div>
         <div className="absolute inset-0 bg-dot-pattern opacity-15 pointer-events-none" />
         <div className="absolute right-0 top-0 w-[600px] h-[600px] bg-gradient-to-bl from-cerulean/20 to-transparent rounded-full blur-3xl pointer-events-none" />
         <div className="absolute left-0 bottom-0 w-[400px] h-[400px] bg-gradient-to-tr from-forest/15 to-transparent rounded-full blur-3xl pointer-events-none" />
@@ -99,34 +101,78 @@ export default function SCADAPage() {
       {/* Platforms */}
       <section className="section bg-cloud">
         <div className="container-xl">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <div className="section-label mb-6">
-                <span className="section-number">02</span> Platforms
+          <div className="section-label mb-8">
+            <span className="section-number">02</span> Platforms
+          </div>
+          <h2 className="section-heading-modern mb-4">SCADA Platforms We Deploy</h2>
+          <p className="section-copy-muted mb-10 max-w-2xl">
+            We categorise our SCADA deployments into three types — matching the platform to your operational requirements and connectivity constraints.
+          </p>
+          <div className="grid lg:grid-cols-3 gap-6">
+
+            {/* HMI SCADA */}
+            <div className="card space-y-4">
+              <div>
+                <span className="tag-blue mb-3 inline-block">HMI SCADA</span>
+                <h3 className="font-semibold text-ink mb-1">Operator Workstations</h3>
+                <p className="text-sm text-ink/50 leading-relaxed">Windows-based systems for local operator control rooms with direct hardware connectivity.</p>
               </div>
-              <h2 className="section-heading-modern mb-5">
-                SCADA Platforms We Deploy
-              </h2>
-              <p className="section-copy-muted mb-4">
-                We evaluate and recommend the right platform based on your process complexity, connectivity, licencing model, and long-term support requirements.
-              </p>
-              <p className="section-copy-muted">
-                Where standard platforms don&apos;t fit, we build custom web-based SCADA using modern open-source components with full source code ownership for the client.
-              </p>
-            </div>
-            <div className="space-y-3">
-              {platforms.map((p) => (
-                <div key={p.name} className="modern-panel card-hover-lift group card flex items-start gap-4 hover:border-cerulean/35">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-semibold text-ink text-sm">{p.name}</h4>
-                      <span className="tag-blue">{p.type}</span>
-                    </div>
-                    <p className="text-sm text-ink/50">{p.desc}</p>
+              <div className="space-y-2 pt-2 border-t border-sky/15">
+                {[
+                  { name: "Siemens WinCC",             desc: "SIMATIC-connected SCADA for Siemens PLC environments" },
+                  { name: "GE iFix / CIMPLICITY",      desc: "For complex continuous process environments" },
+                  { name: "Inductive Automation Ignition", desc: "Hybrid local+web SCADA with unlimited clients" },
+                ].map((p) => (
+                  <div key={p.name} className="rounded-xl bg-cloud p-3">
+                    <p className="font-medium text-sm text-ink">{p.name}</p>
+                    <p className="text-xs text-ink/45 mt-0.5">{p.desc}</p>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
+
+            {/* Local SCADA */}
+            <div className="card space-y-4">
+              <div>
+                <span className="inline-flex items-center text-xs font-mono px-2.5 py-1 rounded-full bg-forest/10 text-forest border border-forest/20 mb-3">Local SCADA</span>
+                <h3 className="font-semibold text-ink mb-1">On-Premises Server</h3>
+                <p className="text-sm text-ink/50 leading-relaxed">LAN-accessible SCADA server for facilities needing air-gapped or private-network operation.</p>
+              </div>
+              <div className="space-y-2 pt-2 border-t border-sky/15">
+                {[
+                  { name: "OPC-UA Server",          desc: "Vendor-agnostic connectivity for any SCADA or historian platform" },
+                  { name: "Ignition (On-Prem)",     desc: "Self-hosted Ignition gateway with local historian and client access" },
+                  { name: "Custom Node-RED Stack",  desc: "Open-source MQTT + Node-RED + InfluxDB on your own hardware" },
+                ].map((p) => (
+                  <div key={p.name} className="rounded-xl bg-cloud p-3">
+                    <p className="font-medium text-sm text-ink">{p.name}</p>
+                    <p className="text-xs text-ink/45 mt-0.5">{p.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Web SCADA */}
+            <div className="card space-y-4 border-cerulean/25 bg-cerulean/3">
+              <div>
+                <span className="inline-flex items-center text-xs font-mono px-2.5 py-1 rounded-full bg-cerulean/10 text-cerulean border border-cerulean/20 mb-3">Web SCADA</span>
+                <h3 className="font-semibold text-ink mb-1">Browser-Based, Anywhere</h3>
+                <p className="text-sm text-ink/50 leading-relaxed">Fully browser-accessible monitoring and control — no client software, works on any device worldwide.</p>
+              </div>
+              <div className="space-y-2 pt-2 border-t border-sky/15">
+                {[
+                  { name: "React + Node-RED",      desc: "Our in-house Web SCADA — custom UI with real-time data flows" },
+                  { name: "InfluxDB + Grafana",    desc: "Time-series historian with powerful analytics dashboards" },
+                  { name: "Ignition Perspective",  desc: "HTML5 Web SCADA with mobile support and responsive layouts" },
+                ].map((p) => (
+                  <div key={p.name} className="rounded-xl bg-white p-3">
+                    <p className="font-medium text-sm text-ink">{p.name}</p>
+                    <p className="text-xs text-ink/45 mt-0.5">{p.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

@@ -1,5 +1,6 @@
 "use client";
-import Image from 'next/image';
+import ImagePlaceholder from "@/app/component/ImagePlaceholder";
+import Image from "next/image";
 import Link from 'next/link';
 
 import ScrollReveal from '@/app/component/ScrollReveal';
@@ -173,7 +174,7 @@ export default function ProfilePage() {
               <div className="relative w-72 h-72 md:w-80 md:h-80">
                 <div className="absolute inset-0 bg-gradient-to-br from-sky/20 via-cerulean/10 to-forest/10 rounded-3xl animate-float" />
                 <div className="absolute inset-4 rounded-2xl overflow-hidden ring-1 ring-sky/20 bg-white flex items-center justify-center shadow-card">
-                  <Image src="/assets/icon.png" alt="Space Auto Tech" width={160} height={160} className="object-contain" />
+                  <ImagePlaceholder src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80" variant="neutral" className="w-full h-full" alt="Space Auto Tech engineering team" />
                 </div>
                 <div className="absolute -right-4 top-8 card-glass px-3 py-2 shadow-card">
                   <span className="text-xs font-mono font-medium text-cerulean">Est. Sep 2024</span>
@@ -249,12 +250,47 @@ export default function ProfilePage() {
         </div>
       </section>
 
+      {/* Hybrid SCADA Section */}
+      <section className="section bg-white">
+        <div className="container-xl">
+          <div className="section-label mb-8">
+            <span className="section-number">04</span> SCADA Expertise
+          </div>
+          <h2 className="section-heading-modern mb-12">Hybrid SCADA Development</h2>
+          <div className="grid sm:grid-cols-3 gap-5">
+            {[
+              {
+                title: "Local SCADA Expertise",
+                desc: "We implement and configure on-premises SCADA systems using WinCC, Ignition, and custom Node-RED stacks — delivering reliable local control for air-gapped and private-network facilities.",
+                color: "cerulean",
+              },
+              {
+                title: "Web SCADA Development",
+                desc: "Our proprietary React + Node-RED + InfluxDB + Grafana Web SCADA platform delivers real-time browser-based monitoring accessible from anywhere in the world — no client software required.",
+                color: "forest",
+              },
+              {
+                title: "Hybrid Integration",
+                desc: "Many facilities need both — local HMI for operators and remote web access for management. We architect hybrid SCADA solutions that deliver both without compromising on security or reliability.",
+                color: "cerulean",
+              },
+            ].map((card) => (
+              <div key={card.title} className={`modern-panel card-hover-lift group card border-t-2 ${card.color === "forest" ? "border-forest" : "border-cerulean"}`}>
+                <div className={`w-8 h-0.5 mb-4 rounded-full transition-all duration-300 group-hover:w-12 ${card.color === "forest" ? "bg-forest/40 group-hover:bg-forest" : "bg-cerulean/40 group-hover:bg-cerulean"}`} />
+                <h3 className={`font-semibold text-ink text-base mb-3 group-hover:transition-colors ${card.color === "forest" ? "group-hover:text-forest" : "group-hover:text-cerulean"}`}>{card.title}</h3>
+                <p className="text-sm text-ink/55 leading-relaxed">{card.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Team ── */}
       <section className="section bg-cloud">
         <div className="container-xl">
           <div className="text-center mb-12">
             <div className="section-label mx-auto mb-4">
-              <span className="section-number">04</span> Leadership
+              <span className="section-number">05</span> Leadership
             </div>
             <h2 className="font-display text-4xl font-semibold text-ink">Our Founders</h2>
           </div>
@@ -262,8 +298,14 @@ export default function ProfilePage() {
             <div className="card-hover max-w-sm w-full text-center group">
               {/* Avatar */}
               <div className="relative mx-auto mb-5 w-20 h-20">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cerulean to-sky flex items-center justify-center group-hover:shadow-[0_0_24px_rgba(92,92,153,0.4)] transition-all duration-300">
-                  <span className="font-display text-2xl font-semibold text-white">GD</span>
+                <div className="w-20 h-20 rounded-2xl overflow-hidden ring-2 ring-cerulean/30 group-hover:ring-cerulean/60 group-hover:shadow-[0_0_24px_rgba(14,116,144,0.35)] transition-all duration-300">
+                  <Image
+                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=160&q=80"
+                    alt="Ganesh Deshmukh"
+                    width={80}
+                    height={80}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
               <span className="badge-indigo mb-3">Managing Director</span>

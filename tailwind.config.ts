@@ -134,6 +134,14 @@ export default {
           '0%':   { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
         },
+        'kenburns': {
+          '0%':   { transform: 'scale(1) translate(0, 0)' },
+          '100%': { transform: 'scale(1.08) translate(-1.5%, -0.8%)' },
+        },
+        'reveal-up': {
+          '0%':   { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
         'fade-up':    'fade-up 0.6s ease-out forwards',
@@ -144,6 +152,8 @@ export default {
         'shimmer':    'shimmer 2.5s linear infinite',
         'float':      'float 4s ease-in-out infinite',
         'marquee-x':  'marquee-x 28s linear infinite',
+        'kenburns':   'kenburns 6s ease-out forwards',
+        'reveal-up':  'reveal-up 0.6s ease-out forwards',
       },
     },
   },

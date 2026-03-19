@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import ImagePlaceholder from "@/app/component/ImagePlaceholder";
 
 const capabilities = [
   {
@@ -59,6 +60,11 @@ const platforms = [
     models: ["CX-Series", "EK-Series"],
     tools:  "TwinCAT 3",
   },
+  {
+    brand: "Renu Electronics",
+    models: ["RE Series", "E3 Series", "ViewOn", "WebAccess"],
+    tools: "ViewOn Studio, WebAccess",
+  },
 ];
 
 const process = [
@@ -89,22 +95,34 @@ export default function PLCPage() {
         <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none" />
         <div className="absolute right-0 top-0 w-[500px] h-[500px] bg-gradient-to-bl from-sky/15 to-transparent rounded-full blur-3xl pointer-events-none" />
         <div className="container-xl relative py-20 md:py-28">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
-            <div className="max-w-2xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
               <div className="flex items-center gap-3 mb-5">
                 <div className="section-label">PLC Development</div>
                 <span className="tag-blue">Industrial Control</span>
+                <span className="tag-light">Renu Electronics</span>
               </div>
               <h1 className="section-heading-modern mb-6 text-balance">
                 Programmable Logic Controller Engineering
               </h1>
-              <p className="section-copy-muted text-base sm:text-lg max-w-xl">
+              <p className="section-copy-muted text-base sm:text-lg max-w-xl mb-8">
                 From single-station control to plant-wide automation — we program, commission, and document PLC systems that run reliably for decades.
               </p>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/components/contect" className="btn-primary">Request a Quote</Link>
+                <Link href="/services" className="btn-secondary">All Services</Link>
+              </div>
             </div>
-            <div className="flex flex-col gap-3">
-              <Link href="/components/contect" className="btn-primary whitespace-nowrap">Request a Quote</Link>
-              <Link href="/services" className="btn-secondary whitespace-nowrap">All Services</Link>
+            <div className="relative h-72 sm:h-80 rounded-3xl overflow-hidden ring-1 ring-slate-300/40 shadow-[0_20px_50px_-24px_rgba(15,23,42,0.4)]">
+              <ImagePlaceholder
+                src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=900&q=80"
+                alt="Industrial PLC control panel with wiring"
+                className="w-full h-full"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-ink/10 to-transparent" />
+              <div className="absolute bottom-4 left-4">
+                <span className="badge-sky">PLC Engineering</span>
+              </div>
             </div>
           </div>
         </div>

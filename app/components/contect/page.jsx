@@ -61,9 +61,18 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
-    await new Promise(r => setTimeout(r, 1000));
-    setStatus("sent");
-    setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) { setStatus("error"); return; }
+      setStatus("sent");
+      setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -106,6 +115,18 @@ export default function ContactPage() {
                   <p className="text-ink/55 text-sm mb-6">Our team will respond within 1 business day.</p>
                   <button onClick={() => setStatus("idle")} className="btn-secondary text-sm">Send Another</button>
                 </div>
+              ) : status === "error" ? (
+                <div className="card border-l-4 border-red-400 text-center py-14">
+                  <div className="w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center mx-auto mb-5 text-red-400">
+                    <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <path d="M12 8v4m0 4h.01" strokeLinecap="round"/>
+                    </svg>
+                  </div>
+                  <h3 className="font-semibold text-ink text-xl mb-2">Failed to Send</h3>
+                  <p className="text-ink/55 text-sm mb-6">Something went wrong. Please check your connection and try again.</p>
+                  <button onClick={() => setStatus("idle")} className="btn-secondary text-sm">Try Again</button>
+                </div>
               ) : (
                 <div className="card space-y-5">
                   <div className="mb-2">
@@ -141,6 +162,10 @@ export default function ContactPage() {
                           <option value="scada">SCADA Solutions</option>
                           <option value="solar">Solar Energy</option>
                           <option value="irrigation">Irrigation Automation</option>
+                          <option value="consultancy">Consultancy</option>
+                          <option value="manufacturing">Manufacturing</option>
+                          <option value="power">Power Sector</option>
+                          <option value="webdev">Web Development</option>
                           <option value="other">Other</option>
                         </select>
                       </div>
